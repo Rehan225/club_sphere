@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 800" width="100%" height="100%" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="actArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="0,1 9,5 0,9" fill="#18181b"/>
+    </marker>
+    <marker id="actCoral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="0,1 9,5 0,9" fill="#dc4c3e"/>
+    </marker>
+  </defs>
+
+  <rect width="1160" height="800" fill="#ffffff"/>
+  <rect x="12" y="10" width="1136" height="780" rx="8" fill="#fafafa" stroke="#d4d4d8" stroke-width="1.5"/>
+
+  <rect x="12" y="10" width="1136" height="42" rx="8" fill="#18181b"/>
+  <text x="32" y="36" fill="#ffffff" font-size="15" font-weight="700">UML Activity Diagram — Cross-Functional Swimlane Workflow</text>
+
+  <!-- Swimlanes -->
+  <rect x="20" y="60" width="224" height="720" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.4"/>
+  <rect x="20" y="60" width="224" height="30" fill="#18181b"/>
+  <text x="132" y="80" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Club Leader</text>
+
+  <rect x="244" y="60" width="224" height="720" fill="#fafafa" stroke="#d4d4d8" stroke-width="1.4"/>
+  <rect x="244" y="60" width="224" height="30" fill="#27272a"/>
+  <text x="356" y="80" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Venue Booking Engine</text>
+
+  <rect x="468" y="60" width="224" height="720" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.4"/>
+  <rect x="468" y="60" width="224" height="30" fill="#3f3f46"/>
+  <text x="580" y="80" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Faculty Coordinator (Tier 1)</text>
+
+  <rect x="692" y="60" width="224" height="720" fill="#fafafa" stroke="#d4d4d8" stroke-width="1.4"/>
+  <rect x="692" y="60" width="224" height="30" fill="#dc4c3e"/>
+  <text x="804" y="80" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Dean's Office (Tier 2)</text>
+
+  <rect x="916" y="60" width="224" height="720" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.4"/>
+  <rect x="916" y="60" width="224" height="30" fill="#18181b"/>
+  <text x="1028" y="80" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Security Desk (Tier 3)</text>
+
+  <!-- Start -->
+  <circle cx="132" cy="115" r="10" fill="#18181b"/>
+  <line x1="132" y1="125" x2="132" y2="152" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+
+  <g transform="translate(42, 155)">
+    <rect width="180" height="42" rx="18" fill="#f4f4f5" stroke="#18181b" stroke-width="1.8"/>
+    <text x="90" y="19" font-size="10.5" font-weight="700" fill="#18181b" text-anchor="middle">Enter Proposal, Budget</text>
+    <text x="90" y="33" font-size="10" fill="#52525b" text-anchor="middle">&amp; Select Venue Slot</text>
+  </g>
+
+  <line x1="222" y1="176" x2="264" y2="176" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+
+  <g transform="translate(266, 155)">
+    <rect width="180" height="42" rx="18" fill="#f4f4f5" stroke="#18181b" stroke-width="1.8"/>
+    <text x="90" y="19" font-size="10.5" font-weight="700" fill="#18181b" text-anchor="middle">Check Clash &amp; Capacity</text>
+    <text x="90" y="33" font-size="10" fill="#52525b" text-anchor="middle">(+30m Buffer Window)</text>
+  </g>
+
+  <line x1="356" y1="197" x2="356" y2="228" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+
+  <polygon points="356,230 392,255 356,280 320,255" fill="#ffffff" stroke="#18181b" stroke-width="1.8"/>
+  <text x="356" y="259" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">Slot OK?</text>
+
+  <path d="M 320 255 L 132 255 L 132 200" fill="none" stroke="#dc4c3e" stroke-width="1.6" marker-end="url(#actCoral)"/>
+  <text x="225" y="247" font-size="9.5" font-weight="700" fill="#dc4c3e" text-anchor="middle">[Clash / Over-Capacity]</text>
+
+  <line x1="356" y1="280" x2="356" y2="312" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+  <text x="392" y="300" font-size="9.5" font-weight="700" fill="#18181b">[Available]</text>
+
+  <g transform="translate(266, 315)">
+    <rect width="180" height="40" rx="18" fill="#18181b" stroke="#18181b" stroke-width="1.8"/>
+    <text x="90" y="18" font-size="10.5" font-weight="700" fill="#ffffff" text-anchor="middle">Acquire Optimistic Lock</text>
+    <text x="90" y="32" font-size="9.5" fill="#d4d4d8" text-anchor="middle">State = SOFT_HOLD</text>
+  </g>
+
+  <line x1="446" y1="335" x2="488" y2="335" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+
+  <g transform="translate(490, 315)">
+    <rect width="180" height="40" rx="18" fill="#f4f4f5" stroke="#18181b" stroke-width="1.8"/>
+    <text x="90" y="18" font-size="10.5" font-weight="700" fill="#18181b" text-anchor="middle">Review Academic Merit</text>
+    <text x="90" y="32" font-size="9.5" fill="#52525b" text-anchor="middle">&amp; Schedule Feasibility</text>
+  </g>
+
+  <line x1="580" y1="355" x2="580" y2="388" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+
+  <polygon points="580,390 618,415 580,440 542,415" fill="#ffffff" stroke="#18181b" stroke-width="1.8"/>
+  <text x="580" y="419" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">Endorse?</text>
+
+  <path d="M 542 415 L 225 415" fill="none" stroke="#dc4c3e" stroke-width="1.6" marker-end="url(#actCoral)"/>
+  <text x="395" y="407" font-size="9.5" font-weight="700" fill="#dc4c3e" text-anchor="middle">[Return for Revision]</text>
+
+  <g transform="translate(42, 395)">
+    <rect width="180" height="40" rx="18" fill="#fef2f2" stroke="#dc4c3e" stroke-width="1.6"/>
+    <text x="90" y="18" font-size="10.5" font-weight="700" fill="#dc4c3e" text-anchor="middle">Revise Proposal Details</text>
+    <text x="90" y="32" font-size="9.5" fill="#991b1b" text-anchor="middle">&amp; Resubmit (24h Hold)</text>
+  </g>
+  <path d="M 42 415 L 28 415 L 28 176 L 40 176" fill="none" stroke="#dc4c3e" stroke-width="1.5" marker-end="url(#actCoral)"/>
+
+  <line x1="618" y1="415" x2="712" y2="415" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+  <text x="665" y="407" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">[Approved]</text>
+
+  <g transform="translate(714, 395)">
+    <rect width="180" height="40" rx="18" fill="#f4f4f5" stroke="#18181b" stroke-width="1.8"/>
+    <text x="90" y="18" font-size="10.5" font-weight="700" fill="#18181b" text-anchor="middle">Evaluate Policy &amp;</text>
+    <text x="90" y="32" font-size="9.5" fill="#52525b" text-anchor="middle">Sanction Club Budget</text>
+  </g>
+
+  <line x1="804" y1="435" x2="804" y2="468" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+
+  <polygon points="804,470 842,495 804,520 766,495" fill="#ffffff" stroke="#18181b" stroke-width="1.8"/>
+  <text x="804" y="499" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">Sanction?</text>
+
+  <path d="M 766 495 L 356 495 L 356 532" fill="none" stroke="#dc4c3e" stroke-width="1.6" marker-end="url(#actCoral)"/>
+  <text x="560" y="487" font-size="9.5" font-weight="700" fill="#dc4c3e" text-anchor="middle">[Rejected at Any Tier]</text>
+
+  <g transform="translate(266, 535)">
+    <rect width="180" height="40" rx="18" fill="#fef2f2" stroke="#dc4c3e" stroke-width="1.8"/>
+    <text x="90" y="18" font-size="10.5" font-weight="700" fill="#dc4c3e" text-anchor="middle">Auto-Release Soft Hold</text>
+    <text x="90" y="32" font-size="9.5" fill="#991b1b" text-anchor="middle">(Slot Freed Instantly)</text>
+  </g>
+
+  <line x1="356" y1="575" x2="356" y2="610" stroke="#dc4c3e" stroke-width="1.6" marker-end="url(#actCoral)"/>
+  <circle cx="356" cy="624" r="11" fill="none" stroke="#dc4c3e" stroke-width="2"/>
+  <circle cx="356" cy="624" r="6" fill="#dc4c3e"/>
+
+  <line x1="842" y1="495" x2="936" y2="495" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+  <text x="888" y="487" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">[Sanctioned]</text>
+
+  <g transform="translate(938, 475)">
+    <rect width="180" height="40" rx="18" fill="#f4f4f5" stroke="#18181b" stroke-width="1.8"/>
+    <text x="90" y="18" font-size="10.5" font-weight="700" fill="#18181b" text-anchor="middle">Verify Crowd Safety &amp;</text>
+    <text x="90" y="32" font-size="9.5" fill="#52525b" text-anchor="middle">Issue Gate Clearance</text>
+  </g>
+
+  <line x1="1028" y1="515" x2="1028" y2="562" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+
+  <!-- Fork Bar -->
+  <rect x="460" y="565" width="620" height="6" rx="2" fill="#18181b"/>
+  <text x="760" y="558" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">&lt;&lt;Fork: ProposalFinalApprovedEvent&gt;&gt;</text>
+
+  <line x1="530" y1="571" x2="530" y2="610" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+  <g transform="translate(445, 613)">
+    <rect width="170" height="40" rx="16" fill="#18181b"/>
+    <text x="85" y="18" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Commit Venue Booking</text>
+    <text x="85" y="32" font-size="9.5" fill="#d4d4d8" text-anchor="middle">SOFT_HOLD -&gt; CONFIRMED</text>
+  </g>
+
+  <line x1="775" y1="571" x2="775" y2="610" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+  <g transform="translate(690, 613)">
+    <rect width="170" height="40" rx="16" fill="#f4f4f5" stroke="#18181b" stroke-width="1.6"/>
+    <text x="85" y="18" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">Earmark Club Ledger</text>
+    <text x="85" y="32" font-size="9.5" fill="#52525b" text-anchor="middle">&amp; Enable Expense Log</text>
+  </g>
+
+  <line x1="1020" y1="571" x2="1020" y2="610" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+  <g transform="translate(935, 613)">
+    <rect width="170" height="40" rx="16" fill="#f4f4f5" stroke="#18181b" stroke-width="1.6"/>
+    <text x="85" y="18" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">Publish Security Pass</text>
+    <text x="85" y="32" font-size="9.5" fill="#52525b" text-anchor="middle">&amp; Unlock QR Certs</text>
+  </g>
+
+  <!-- Join Bar -->
+  <line x1="530" y1="653" x2="530" y2="688" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+  <line x1="775" y1="653" x2="775" y2="688" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+  <line x1="1020" y1="653" x2="1020" y2="688" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+  <rect x="460" y="690" width="620" height="6" rx="2" fill="#18181b"/>
+
+  <path d="M 775 696 L 775 726 L 225 726" fill="none" stroke="#18181b" stroke-width="1.8" marker-end="url(#actArr)"/>
+  <g transform="translate(42, 706)">
+    <rect width="180" height="40" rx="18" fill="#f4f4f5" stroke="#18181b" stroke-width="1.8"/>
+    <text x="90" y="18" font-size="10.5" font-weight="700" fill="#18181b" text-anchor="middle">Execute Event, Upload</text>
+    <text x="90" y="32" font-size="9.5" fill="#52525b" text-anchor="middle">Receipts &amp; Issue Certs</text>
+  </g>
+
+  <line x1="132" y1="746" x2="132" y2="762" stroke="#18181b" stroke-width="1.8"/>
+  <circle cx="132" cy="768" r="9" fill="none" stroke="#18181b" stroke-width="2"/>
+  <circle cx="132" cy="768" r="5" fill="#18181b"/>
+</svg>

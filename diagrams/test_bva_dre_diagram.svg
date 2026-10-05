@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 420" width="100%" height="100%" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <rect width="1100" height="420" fill="#ffffff"/>
+  <rect x="10" y="10" width="1080" height="400" rx="8" fill="#fafafa" stroke="#d4d4d8" stroke-width="1.5"/>
+  <rect x="10" y="10" width="1080" height="38" rx="8" fill="#18181b"/>
+  <text x="28" y="34" fill="#ffffff" font-size="13.5" font-weight="700">Boundary Value Analysis (BVA) Ranges &amp; Defect Removal Efficiency (DRE = 95.0%)</text>
+  <text x="1070" y="34" fill="#a1a1aa" font-size="11" text-anchor="end">19 Pre-Release Defects Caught | 1 Post-Release Defect | 12.50 KLOC</text>
+
+  <!-- BVA 1: Budget Range -->
+  <g transform="translate(26, 62)">
+    <rect width="620" height="160" rx="6" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.4"/>
+    <text x="18" y="24" font-size="12" font-weight="700" fill="#18181b">1. Event Budget BVA Partitioning (requestedBudgetINR: ₹0 to ₹1,50,000)</text>
+
+    <!-- Number Line -->
+    <rect x="40" y="65" width="100" height="26" fill="#fef2f2" stroke="#dc4c3e"/>
+    <text x="90" y="82" font-size="9.5" font-weight="700" fill="#dc4c3e" text-anchor="middle">INVALID (&lt; ₹0)</text>
+
+    <rect x="140" y="65" width="340" height="26" fill="#18181b"/>
+    <text x="310" y="82" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">VALID PARTITION (₹0 &lt;= B &lt;= ₹1,50,000 &amp; B &lt;= ClubBal)</text>
+
+    <rect x="480" y="65" width="105" height="26" fill="#fef2f2" stroke="#dc4c3e"/>
+    <text x="532" y="82" font-size="9.5" font-weight="700" fill="#dc4c3e" text-anchor="middle">INVALID (&gt; ₹1.5L)</text>
+
+    <!-- Tick Marks -->
+    <g font-size="9" fill="#18181b" font-weight="700" text-anchor="middle">
+      <text x="115" y="56" fill="#dc4c3e">₹-1</text><text x="115" y="108" fill="#71717a">min-1</text>
+      <text x="145" y="56">₹0</text><text x="145" y="108" fill="#71717a">min</text>
+      <text x="175" y="56">₹1</text><text x="175" y="108" fill="#71717a">min+1</text>
+      <text x="310" y="56">₹18,500</text><text x="310" y="108" fill="#71717a">nominal</text>
+      <text x="440" y="56">₹1,49,999</text><text x="440" y="108" fill="#71717a">max-1</text>
+      <text x="480" y="56">₹1,50,000</text><text x="480" y="108" fill="#71717a">max</text>
+      <text x="530" y="56" fill="#dc4c3e">₹1,50,001</text><text x="530" y="108" fill="#71717a">max+1</text>
+    </g>
+    <text x="18" y="142" font-size="10" fill="#3f3f46">• Policy Sub-Boundary: B = ₹0 (with N &lt;= 50, Classroom) qualifies for Tier-2 Fast-Track; B &gt;= ₹1 requires Full Dean Sanction.</text>
+  </g>
+
+  <!-- BVA 2: Attendee Count Range -->
+  <g transform="translate(26, 236)">
+    <rect width="620" height="160" rx="6" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.4"/>
+    <text x="18" y="24" font-size="12" font-weight="700" fill="#18181b">2. Attendee-Count BVA Partitioning (expectedAttendees: 10 to VenueCap &lt;= 2,000)</text>
+
+    <rect x="40" y="65" width="95" height="26" fill="#fef2f2" stroke="#dc4c3e"/>
+    <text x="87" y="82" font-size="9.5" font-weight="700" fill="#dc4c3e" text-anchor="middle">INVALID (&lt; 10)</text>
+
+    <rect x="135" y="65" width="235" height="26" fill="#18181b"/>
+    <text x="252" y="82" font-size="9.5" font-weight="700" fill="#ffffff" text-anchor="middle">VALID FOR AUDITORIUM (10..500)</text>
+
+    <rect x="370" y="65" width="110" height="26" fill="#52525b"/>
+    <text x="425" y="82" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">OAT ONLY (501..2000)</text>
+
+    <rect x="480" y="65" width="105" height="26" fill="#fef2f2" stroke="#dc4c3e"/>
+    <text x="532" y="82" font-size="9.5" font-weight="700" fill="#dc4c3e" text-anchor="middle">INVALID (&gt; 2000)</text>
+
+    <g font-size="9" fill="#18181b" font-weight="700" text-anchor="middle">
+      <text x="112" y="56" fill="#dc4c3e">9</text><text x="112" y="108" fill="#71717a">min-1</text>
+      <text x="138" y="56">10</text><text x="138" y="108" fill="#71717a">min</text>
+      <text x="162" y="56">11</text><text x="162" y="108" fill="#71717a">min+1</text>
+      <text x="342" y="56">499</text><text x="342" y="108" fill="#71717a">cap-1</text>
+      <text x="370" y="56">500</text><text x="370" y="108" fill="#71717a">cap</text>
+      <text x="398" y="56" fill="#dc4c3e">501</text><text x="398" y="108" fill="#dc4c3e">cap+1</text>
+      <text x="480" y="56">2000</text><text x="480" y="108" fill="#71717a">max</text>
+      <text x="530" y="56" fill="#dc4c3e">2001</text><text x="530" y="108" fill="#71717a">max+1</text>
+    </g>
+    <text x="18" y="142" font-size="10" fill="#3f3f46">• Dynamic Venue Cap Check: N = 501 on 500-seat Auditorium triggers HTTP 409 Capacity Error &amp; recommends Open Air Theatre.</text>
+  </g>
+
+  <!-- Right Panel: DRE & Defect Phase Funnel -->
+  <g transform="translate(662, 62)">
+    <rect width="412" height="334" rx="6" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.4"/>
+    <rect width="412" height="28" rx="6" fill="#18181b"/>
+    <text x="206" y="19" fill="#ffffff" font-size="11.5" font-weight="700" text-anchor="middle">QA Defect Discovery by Phase (Total = 20 Defects)</text>
+
+    <!-- Horizontal Bars -->
+    <g font-size="10" fill="#18181b" font-weight="600">
+      <text x="16" y="60">Unit Testing (Sp 1–2)</text>
+      <rect x="165" y="47" width="54" height="18" rx="3" fill="#27272a"/>
+      <text x="226" y="60" font-weight="700">3 (15%)</text>
+
+      <text x="16" y="92">Integration Testing (Sp 3)</text>
+      <rect x="165" y="79" width="54" height="18" rx="3" fill="#27272a"/>
+      <text x="226" y="92" font-weight="700">3 (15%)</text>
+
+      <text x="16" y="124">System QA: BVA &amp; DT</text>
+      <rect x="165" y="111" width="180" height="18" rx="3" fill="#18181b"/>
+      <text x="352" y="124" font-weight="700">10 (50%)</text>
+
+      <text x="16" y="156">46-Club Pilot UAT</text>
+      <rect x="165" y="143" width="54" height="18" rx="3" fill="#52525b"/>
+      <text x="226" y="156" font-weight="700">3 (15%)</text>
+
+      <text x="16" y="188" fill="#dc4c3e" font-weight="700">Post-Release Escape (D)</text>
+      <rect x="165" y="175" width="18" height="18" rx="3" fill="#dc4c3e"/>
+      <text x="190" y="188" fill="#dc4c3e" font-weight="700">1 (5%)</text>
+    </g>
+
+    <line x1="16" y1="208" x2="396" y2="208" stroke="#d4d4d8"/>
+
+    <!-- Worked Formulas Box -->
+    <rect x="16" y="220" width="380" height="98" rx="5" fill="#f4f4f5" stroke="#18181b"/>
+    <text x="28" y="240" font-size="10.5" font-weight="700" fill="#18181b" font-family="monospace">DRE = (E / (E + D)) × 100 = (19 / 20) × 100 = 95.0%</text>
+    <text x="28" y="262" font-size="10.5" font-weight="700" fill="#18181b" font-family="monospace">Total Defect Density = 20 / 12.5 KLOC = 1.60 / KLOC</text>
+    <text x="28" y="284" font-size="10.5" font-weight="700" fill="#dc4c3e" font-family="monospace">Post-Release Density = 1 / 12.5 KLOC = 0.08 / KLOC</text>
+    <text x="28" y="304" font-size="9.5" fill="#52525b">100% of Critical &amp; High-severity clash/workflow bugs caught pre-release</text>
+  </g>
+</svg>

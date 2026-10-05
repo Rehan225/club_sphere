@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 560" width="100%" height="100%" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="cpArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="0,1 9,5 0,9" fill="#dc4c3e"/>
+    </marker>
+    <marker id="nmArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="0,1 9,5 0,9" fill="#52525b"/>
+    </marker>
+  </defs>
+
+  <rect width="1160" height="560" fill="#ffffff"/>
+  <rect x="10" y="10" width="1140" height="540" rx="8" fill="#fafafa" stroke="#d4d4d8" stroke-width="1.5"/>
+  <rect x="10" y="10" width="1140" height="40" rx="8" fill="#18181b"/>
+  <text x="28" y="35" fill="#ffffff" font-size="14.5" font-weight="700">Activity-on-Node (AON) Network Diagram &amp; Critical Path Method (CPM)</text>
+  <text x="1130" y="35" fill="#fca5a5" font-size="11.5" font-weight="700" text-anchor="end">Critical Path (Coral): WBS 1.0 -&gt; 2.0 -&gt; 3.1 -&gt; 3.2 -&gt; 3.3 -&gt; 4.1 -&gt; 5.0 -&gt; 6.0 (22 Weeks, Slack = 0)</text>
+
+  <!-- Node Key -->
+  <g transform="translate(28, 66)">
+    <rect width="195" height="82" rx="5" fill="#ffffff" stroke="#18181b" stroke-width="1.4"/>
+    <rect width="195" height="20" rx="5" fill="#18181b"/>
+    <text x="97" y="14" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">AON Node Key (Weeks)</text>
+    <line x1="0" y1="42" x2="195" y2="42" stroke="#d4d4d8"/>
+    <line x1="0" y1="62" x2="195" y2="62" stroke="#d4d4d8"/>
+    <line x1="65" y1="20" x2="65" y2="82" stroke="#d4d4d8"/>
+    <line x1="130" y1="20" x2="130" y2="82" stroke="#d4d4d8"/>
+    <text x="32" y="35" font-size="9" font-weight="700" fill="#18181b" text-anchor="middle">ES</text>
+    <text x="97" y="35" font-size="9" font-weight="700" fill="#18181b" text-anchor="middle">WBS ID</text>
+    <text x="162" y="35" font-size="9" font-weight="700" fill="#18181b" text-anchor="middle">EF</text>
+    <text x="97" y="56" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">Activity Name</text>
+    <text x="32" y="76" font-size="9" font-weight="700" fill="#52525b" text-anchor="middle">LS</text>
+    <text x="97" y="76" font-size="9" font-weight="700" fill="#dc4c3e" text-anchor="middle">Dur | Slack</text>
+    <text x="162" y="76" font-size="9" font-weight="700" fill="#52525b" text-anchor="middle">LF</text>
+  </g>
+
+  <!-- Critical Nodes (Coral Header #dc4c3e) -->
+  <g transform="translate(28, 210)">
+    <rect width="142" height="86" rx="5" fill="#ffffff" stroke="#dc4c3e" stroke-width="2.2"/>
+    <rect width="142" height="22" rx="5" fill="#dc4c3e"/>
+    <text x="22" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">0</text>
+    <text x="71" y="15" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">WBS 1.0</text>
+    <text x="120" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">2</text>
+    <text x="71" y="41" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">Elicitation &amp; SRS</text>
+    <text x="71" y="55" font-size="9" fill="#52525b" text-anchor="middle">(Sprint 1: 11 SP)</text>
+    <line x1="0" y1="64" x2="142" y2="64" stroke="#fecaca"/>
+    <text x="22" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">0</text>
+    <text x="71" y="79" font-size="9" font-weight="700" fill="#dc4c3e" text-anchor="middle">D:2w | S:0</text>
+    <text x="120" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">2</text>
+  </g>
+
+  <g transform="translate(210, 210)">
+    <rect width="142" height="86" rx="5" fill="#ffffff" stroke="#dc4c3e" stroke-width="2.2"/>
+    <rect width="142" height="22" rx="5" fill="#dc4c3e"/>
+    <text x="22" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">2</text>
+    <text x="71" y="15" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">WBS 2.0</text>
+    <text x="120" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">4</text>
+    <text x="71" y="41" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">UML, DB &amp; Calendar</text>
+    <text x="71" y="55" font-size="9" fill="#52525b" text-anchor="middle">(Sprint 2: 14 SP)</text>
+    <line x1="0" y1="64" x2="142" y2="64" stroke="#fecaca"/>
+    <text x="22" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">2</text>
+    <text x="71" y="79" font-size="9" font-weight="700" fill="#dc4c3e" text-anchor="middle">D:2w | S:0</text>
+    <text x="120" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">4</text>
+  </g>
+
+  <g transform="translate(392, 210)">
+    <rect width="142" height="86" rx="5" fill="#ffffff" stroke="#dc4c3e" stroke-width="2.2"/>
+    <rect width="142" height="22" rx="5" fill="#dc4c3e"/>
+    <text x="22" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">4</text>
+    <text x="71" y="15" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">WBS 3.1</text>
+    <text x="120" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">7</text>
+    <text x="71" y="41" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">Venue Clash Lock</text>
+    <text x="71" y="55" font-size="9" fill="#52525b" text-anchor="middle">(Sprint 3: 13 SP)</text>
+    <line x1="0" y1="64" x2="142" y2="64" stroke="#fecaca"/>
+    <text x="22" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">4</text>
+    <text x="71" y="79" font-size="9" font-weight="700" fill="#dc4c3e" text-anchor="middle">D:3w | S:0</text>
+    <text x="120" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">7</text>
+  </g>
+
+  <g transform="translate(574, 210)">
+    <rect width="142" height="86" rx="5" fill="#ffffff" stroke="#dc4c3e" stroke-width="2.2"/>
+    <rect width="142" height="22" rx="5" fill="#dc4c3e"/>
+    <text x="22" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">7</text>
+    <text x="71" y="15" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">WBS 3.2</text>
+    <text x="120" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">11</text>
+    <text x="71" y="41" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">3-Tier Approval</text>
+    <text x="71" y="55" font-size="9" fill="#52525b" text-anchor="middle">(Sp 4–5: 26 SP)</text>
+    <line x1="0" y1="64" x2="142" y2="64" stroke="#fecaca"/>
+    <text x="22" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">7</text>
+    <text x="71" y="79" font-size="9" font-weight="700" fill="#dc4c3e" text-anchor="middle">D:4w | S:0</text>
+    <text x="120" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">11</text>
+  </g>
+
+  <!-- Parallel Non-Critical Top (Black Header) -->
+  <g transform="translate(480, 75)">
+    <rect width="142" height="86" rx="5" fill="#ffffff" stroke="#27272a" stroke-width="1.6"/>
+    <rect width="142" height="22" rx="5" fill="#27272a"/>
+    <text x="22" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">4</text>
+    <text x="71" y="15" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">WBS 3.4</text>
+    <text x="120" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">7</text>
+    <text x="71" y="41" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">Annual Handover</text>
+    <text x="71" y="55" font-size="9" fill="#52525b" text-anchor="middle">(6 SP Parallel)</text>
+    <line x1="0" y1="64" x2="142" y2="64" stroke="#d4d4d8"/>
+    <text x="22" y="79" font-size="9.5" font-weight="700" fill="#52525b" text-anchor="middle">11</text>
+    <text x="71" y="79" font-size="9" font-weight="700" fill="#18181b" text-anchor="middle">D:3w | S:+7w</text>
+    <text x="120" y="79" font-size="9.5" font-weight="700" fill="#52525b" text-anchor="middle">14</text>
+  </g>
+
+  <!-- Parallel Non-Critical Bottom (Black Header) -->
+  <g transform="translate(574, 345)">
+    <rect width="142" height="86" rx="5" fill="#ffffff" stroke="#27272a" stroke-width="1.6"/>
+    <rect width="142" height="22" rx="5" fill="#27272a"/>
+    <text x="22" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">7</text>
+    <text x="71" y="15" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">WBS 3.5</text>
+    <text x="120" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">10</text>
+    <text x="71" y="41" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">QR Certificates</text>
+    <text x="71" y="55" font-size="9" fill="#52525b" text-anchor="middle">(6 SP Parallel)</text>
+    <line x1="0" y1="64" x2="142" y2="64" stroke="#d4d4d8"/>
+    <text x="22" y="79" font-size="9.5" font-weight="700" fill="#52525b" text-anchor="middle">11</text>
+    <text x="71" y="79" font-size="9" font-weight="700" fill="#18181b" text-anchor="middle">D:3w | S:+4w</text>
+    <text x="120" y="79" font-size="9.5" font-weight="700" fill="#52525b" text-anchor="middle">14</text>
+  </g>
+
+  <g transform="translate(756, 210)">
+    <rect width="142" height="86" rx="5" fill="#ffffff" stroke="#dc4c3e" stroke-width="2.2"/>
+    <rect width="142" height="22" rx="5" fill="#dc4c3e"/>
+    <text x="22" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">11</text>
+    <text x="71" y="15" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">WBS 3.3</text>
+    <text x="120" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">14</text>
+    <text x="71" y="41" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">Budget Ledger</text>
+    <text x="71" y="55" font-size="9" fill="#52525b" text-anchor="middle">(Sp 6–7: 13 SP)</text>
+    <line x1="0" y1="64" x2="142" y2="64" stroke="#fecaca"/>
+    <text x="22" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">11</text>
+    <text x="71" y="79" font-size="9" font-weight="700" fill="#dc4c3e" text-anchor="middle">D:3w | S:0</text>
+    <text x="120" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">14</text>
+  </g>
+
+  <g transform="translate(940, 210)">
+    <rect width="150" height="86" rx="5" fill="#ffffff" stroke="#dc4c3e" stroke-width="2.2"/>
+    <rect width="150" height="22" rx="5" fill="#dc4c3e"/>
+    <text x="22" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">14</text>
+    <text x="75" y="15" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">WBS 4.1</text>
+    <text x="128" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">16</text>
+    <text x="75" y="41" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">Audit &amp; SLA Engine</text>
+    <text x="75" y="55" font-size="9" fill="#52525b" text-anchor="middle">(Sp 8: 96 SP Done)</text>
+    <line x1="0" y1="64" x2="150" y2="64" stroke="#fecaca"/>
+    <text x="22" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">14</text>
+    <text x="75" y="79" font-size="9" font-weight="700" fill="#dc4c3e" text-anchor="middle">D:2w | S:0</text>
+    <text x="128" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">16</text>
+  </g>
+
+  <g transform="translate(756, 445)">
+    <rect width="142" height="86" rx="5" fill="#ffffff" stroke="#27272a" stroke-width="1.6"/>
+    <rect width="142" height="22" rx="5" fill="#27272a"/>
+    <text x="22" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">14</text>
+    <text x="71" y="15" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">WBS 4.2</text>
+    <text x="120" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">17</text>
+    <text x="71" y="41" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">Ops Runbooks</text>
+    <text x="71" y="55" font-size="9" fill="#52525b" text-anchor="middle">&amp; Handover Docs</text>
+    <line x1="0" y1="64" x2="142" y2="64" stroke="#d4d4d8"/>
+    <text x="22" y="79" font-size="9.5" font-weight="700" fill="#52525b" text-anchor="middle">16</text>
+    <text x="71" y="79" font-size="9" font-weight="700" fill="#18181b" text-anchor="middle">D:3w | S:+2w</text>
+    <text x="120" y="79" font-size="9.5" font-weight="700" fill="#52525b" text-anchor="middle">19</text>
+  </g>
+
+  <g transform="translate(940, 330)">
+    <rect width="150" height="86" rx="5" fill="#ffffff" stroke="#dc4c3e" stroke-width="2.2"/>
+    <rect width="150" height="22" rx="5" fill="#dc4c3e"/>
+    <text x="22" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">16</text>
+    <text x="75" y="15" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">WBS 5.0</text>
+    <text x="128" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">19</text>
+    <text x="75" y="41" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">BVA/DT QA &amp; UAT</text>
+    <text x="75" y="55" font-size="9" fill="#52525b" text-anchor="middle">(46-Club Pilot)</text>
+    <line x1="0" y1="64" x2="150" y2="64" stroke="#fecaca"/>
+    <text x="22" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">16</text>
+    <text x="75" y="79" font-size="9" font-weight="700" fill="#dc4c3e" text-anchor="middle">D:3w | S:0</text>
+    <text x="128" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">19</text>
+  </g>
+
+  <g transform="translate(940, 445)">
+    <rect width="150" height="86" rx="5" fill="#ffffff" stroke="#dc4c3e" stroke-width="2.2"/>
+    <rect width="150" height="22" rx="5" fill="#dc4c3e"/>
+    <text x="22" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">19</text>
+    <text x="75" y="15" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">WBS 6.0</text>
+    <text x="128" y="15" fill="#ffffff" font-size="9.5" font-weight="700" text-anchor="middle">22</text>
+    <text x="75" y="41" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">Go-Live &amp; Handover</text>
+    <text x="75" y="55" font-size="9" fill="#52525b" text-anchor="middle">(+14w Grad Buffer)</text>
+    <line x1="0" y1="64" x2="150" y2="64" stroke="#fecaca"/>
+    <text x="22" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">19</text>
+    <text x="75" y="79" font-size="9" font-weight="700" fill="#dc4c3e" text-anchor="middle">D:3w | S:0</text>
+    <text x="128" y="79" font-size="9.5" font-weight="700" fill="#18181b" text-anchor="middle">22</text>
+  </g>
+
+  <!-- Critical Path Edges -->
+  <line x1="170" y1="253" x2="207" y2="253" stroke="#dc4c3e" stroke-width="2.6" marker-end="url(#cpArr)"/>
+  <line x1="352" y1="253" x2="389" y2="253" stroke="#dc4c3e" stroke-width="2.6" marker-end="url(#cpArr)"/>
+  <line x1="534" y1="253" x2="571" y2="253" stroke="#dc4c3e" stroke-width="2.6" marker-end="url(#cpArr)"/>
+  <line x1="716" y1="253" x2="753" y2="253" stroke="#dc4c3e" stroke-width="2.6" marker-end="url(#cpArr)"/>
+  <line x1="898" y1="253" x2="937" y2="253" stroke="#dc4c3e" stroke-width="2.6" marker-end="url(#cpArr)"/>
+  <line x1="1015" y1="296" x2="1015" y2="327" stroke="#dc4c3e" stroke-width="2.6" marker-end="url(#cpArr)"/>
+  <line x1="1015" y1="416" x2="1015" y2="442" stroke="#dc4c3e" stroke-width="2.6" marker-end="url(#cpArr)"/>
+
+  <!-- Non-Critical Edges -->
+  <path d="M 352 225 L 372 118 L 477 118" fill="none" stroke="#52525b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#nmArr)"/>
+  <path d="M 622 118 L 975 118 L 975 207" fill="none" stroke="#52525b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#nmArr)"/>
+  <path d="M 534 275 L 554 388 L 571 388" fill="none" stroke="#52525b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#nmArr)"/>
+  <path d="M 716 388 L 915 388 L 915 270 L 937 270" fill="none" stroke="#52525b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#nmArr)"/>
+  <path d="M 827 296 L 827 442" fill="none" stroke="#52525b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#nmArr)"/>
+  <line x1="898" y1="488" x2="937" y2="488" stroke="#52525b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#nmArr)"/>
+
+  <!-- Legend -->
+  <rect x="28" y="450" width="490" height="78" rx="6" fill="#ffffff" stroke="#d4d4d8"/>
+  <text x="42" y="471" font-size="11" font-weight="700" fill="#18181b">Critical Path Summary:</text>
+  <line x1="42" y1="489" x2="88" y2="489" stroke="#dc4c3e" stroke-width="2.8" marker-end="url(#cpArr)"/>
+  <text x="98" y="493" font-size="10.5" font-weight="700" fill="#dc4c3e">Critical Path (Zero Float/Slack = 0w): 22 Weeks (5.1 Months)</text>
+  <line x1="42" y1="512" x2="88" y2="512" stroke="#52525b" stroke-width="1.6" stroke-dasharray="5,3" marker-end="url(#nmArr)"/>
+  <text x="98" y="516" font-size="10" fill="#3f3f46">Non-Critical Float Paths: WBS 3.4 (+7w), WBS 3.5 (+4w), WBS 4.2 (+2w)</text>
+</svg>

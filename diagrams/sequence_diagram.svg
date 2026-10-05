@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 830" width="100%" height="100%" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="syncArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="0,1 9,5 0,9" fill="#18181b"/>
+    </marker>
+    <marker id="coralSync" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="0,1 9,5 0,9" fill="#dc4c3e"/>
+    </marker>
+    <marker id="replyArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#52525b" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <rect width="1180" height="830" fill="#ffffff"/>
+  <rect x="12" y="10" width="1156" height="810" rx="8" fill="#fafafa" stroke="#d4d4d8" stroke-width="1.5"/>
+
+  <rect x="12" y="10" width="1156" height="42" rx="8" fill="#18181b"/>
+  <text x="32" y="36" fill="#ffffff" font-size="15" font-weight="700">UML Sequence Diagram — "Propose an Event and Get It Approved"</text>
+  <text x="1148" y="36" fill="#a1a1aa" font-size="11.5" text-anchor="end">End-to-End Flow: Proposal -&gt; Soft-Hold -&gt; 3-Tier Approval -&gt; Confirmed Booking</text>
+
+  <!-- Lifelines -->
+  <g transform="translate(80, 68)"><rect x="-55" y="0" width="110" height="38" rx="5" fill="#18181b"/><text x="0" y="17" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">:ClubLeader</text><text x="0" y="31" fill="#a1a1aa" font-size="9" text-anchor="middle">&lt;&lt;Actor&gt;&gt;</text></g>
+  <line x1="80" y1="106" x2="80" y2="800" stroke="#71717a" stroke-width="1.4" stroke-dasharray="5,4"/>
+
+  <g transform="translate(245, 68)"><rect x="-68" y="0" width="136" height="38" rx="5" fill="#27272a"/><text x="0" y="17" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">:EventProposal</text><text x="0" y="31" fill="#d4d4d8" font-size="9" text-anchor="middle">Core Aggregate</text></g>
+  <line x1="245" y1="106" x2="245" y2="800" stroke="#71717a" stroke-width="1.4" stroke-dasharray="5,4"/>
+
+  <g transform="translate(430, 68)"><rect x="-74" y="0" width="148" height="38" rx="5" fill="#27272a"/><text x="0" y="17" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">:VenueSlotBooking</text><text x="0" y="31" fill="#d4d4d8" font-size="9" text-anchor="middle">IVenueBookingPort</text></g>
+  <line x1="430" y1="106" x2="430" y2="800" stroke="#71717a" stroke-width="1.4" stroke-dasharray="5,4"/>
+
+  <g transform="translate(625, 68)"><rect x="-80" y="0" width="160" height="38" rx="5" fill="#dc4c3e"/><text x="0" y="17" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">:ApprovalWorkflowEngine</text><text x="0" y="31" fill="#fee2e2" font-size="9" text-anchor="middle">Orchestrator &amp; Audit</text></g>
+  <line x1="625" y1="106" x2="625" y2="800" stroke="#71717a" stroke-width="1.4" stroke-dasharray="5,4"/>
+
+  <g transform="translate(805, 68)"><rect x="-60" y="0" width="120" height="38" rx="5" fill="#3f3f46"/><text x="0" y="17" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">:FacultyCoord</text><text x="0" y="31" fill="#d4d4d8" font-size="9" text-anchor="middle">Tier-1 Approver</text></g>
+  <line x1="805" y1="106" x2="805" y2="800" stroke="#71717a" stroke-width="1.4" stroke-dasharray="5,4"/>
+
+  <g transform="translate(955, 68)"><rect x="-58" y="0" width="116" height="38" rx="5" fill="#3f3f46"/><text x="0" y="17" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">:DeansOffice</text><text x="0" y="31" fill="#d4d4d8" font-size="9" text-anchor="middle">Tier-2 Approver</text></g>
+  <line x1="955" y1="106" x2="955" y2="800" stroke="#71717a" stroke-width="1.4" stroke-dasharray="5,4"/>
+
+  <g transform="translate(1100, 68)"><rect x="-58" y="0" width="116" height="38" rx="5" fill="#18181b"/><text x="0" y="17" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">:SecurityDesk</text><text x="0" y="31" fill="#a1a1aa" font-size="9" text-anchor="middle">Tier-3 Clearance</text></g>
+  <line x1="1100" y1="106" x2="1100" y2="800" stroke="#71717a" stroke-width="1.4" stroke-dasharray="5,4"/>
+
+  <!-- Activations -->
+  <rect x="75" y="122" width="10" height="660" fill="#e4e4e7" stroke="#18181b"/>
+  <rect x="240" y="128" width="10" height="650" fill="#e4e4e7" stroke="#18181b"/>
+  <rect x="425" y="148" width="10" height="125" fill="#e4e4e7" stroke="#18181b"/>
+  <rect x="425" y="695" width="10" height="65" fill="#e4e4e7" stroke="#18181b"/>
+  <rect x="620" y="295" width="10" height="480" fill="#fee2e2" stroke="#dc4c3e"/>
+  <rect x="800" y="330" width="10" height="75" fill="#e4e4e7" stroke="#3f3f46"/>
+  <rect x="950" y="450" width="10" height="85" fill="#e4e4e7" stroke="#3f3f46"/>
+  <rect x="1095" y="580" width="10" height="80" fill="#e4e4e7" stroke="#18181b"/>
+
+  <!-- Messages -->
+  <line x1="85" y1="136" x2="238" y2="136" stroke="#18181b" stroke-width="1.6" marker-end="url(#syncArr)"/>
+  <text x="162" y="129" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">1: submitProposal(title, venueId, slot, budget, attendees)</text>
+
+  <line x1="250" y1="158" x2="423" y2="158" stroke="#18181b" stroke-width="1.6" marker-end="url(#syncArr)"/>
+  <text x="336" y="151" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">2: placeSoftHold(venueId, slot, attendees)</text>
+
+  <!-- Alt Box -->
+  <rect x="35" y="174" width="520" height="104" rx="4" fill="#f4f4f5" fill-opacity="0.6" stroke="#18181b" stroke-width="1.3"/>
+  <polygon points="35,174 115,174 125,184 115,194 35,194" fill="#18181b"/>
+  <text x="75" y="188" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">alt [Slot Check]</text>
+  <text x="135" y="188" fill="#18181b" font-size="10" font-weight="700">[No Clash (+30m Buffer) &amp; Attendees &lt;= Capacity]</text>
+
+  <line x1="423" y1="210" x2="252" y2="210" stroke="#52525b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#replyArr)"/>
+  <text x="336" y="204" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">2.1: return HoldToken(status = SOFT_HOLD)</text>
+
+  <line x1="35" y1="228" x2="555" y2="228" stroke="#dc4c3e" stroke-width="1.2" stroke-dasharray="4,4"/>
+  <text x="45" y="242" fill="#dc4c3e" font-size="10" font-weight="700">[else: Venue Clash OR Capacity Exceeded (FR-03)]</text>
+  <line x1="423" y1="262" x2="87" y2="262" stroke="#dc4c3e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#coralSync)"/>
+  <text x="260" y="256" font-size="10" font-weight="700" fill="#dc4c3e" text-anchor="middle">2.2: throw VenueClashError + suggestAlternateSlots()</text>
+
+  <line x1="250" y1="302" x2="618" y2="302" stroke="#dc4c3e" stroke-width="1.8" marker-end="url(#coralSync)"/>
+  <text x="435" y="295" font-size="10" font-weight="700" fill="#dc4c3e" text-anchor="middle">3: initiateWorkflow(proposalId, HoldToken, budget)</text>
+
+  <!-- Tier 1 -->
+  <line x1="630" y1="338" x2="798" y2="338" stroke="#18181b" stroke-width="1.6" marker-end="url(#syncArr)"/>
+  <text x="714" y="331" font-size="10" font-weight="600" fill="#18181b" text-anchor="middle">4: notifyTier1Review(proposalId)</text>
+
+  <line x1="798" y1="375" x2="632" y2="375" stroke="#18181b" stroke-width="1.6" marker-end="url(#syncArr)"/>
+  <text x="714" y="368" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">5: recordDecision(FACULTY, APPROVE)</text>
+
+  <path d="M 630 390 L 665 390 L 665 410 L 632 410" fill="none" stroke="#18181b" stroke-width="1.4" marker-end="url(#syncArr)"/>
+  <text x="672" y="404" font-size="9.5" font-weight="600" fill="#3f3f46">5.1: appendAuditHash(FACULTY_APPROVED)</text>
+
+  <!-- Tier 2 -->
+  <rect x="560" y="425" width="465" height="122" rx="4" fill="#f4f4f5" fill-opacity="0.55" stroke="#3f3f46" stroke-width="1.3"/>
+  <polygon points="560,425 640,425 650,435 640,445 560,445" fill="#3f3f46"/>
+  <text x="600" y="439" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">opt / alt</text>
+  <text x="660" y="439" fill="#18181b" font-size="10" font-weight="700">[Tier-2 Dean Approval &amp; Budget Sanction (FR-05, FR-07)]</text>
+
+  <line x1="630" y1="462" x2="948" y2="462" stroke="#18181b" stroke-width="1.6" marker-end="url(#syncArr)"/>
+  <text x="790" y="455" font-size="10" font-weight="600" fill="#18181b" text-anchor="middle">6: routeToDean(proposalId, budgetBreakdown)</text>
+
+  <line x1="948" y1="500" x2="632" y2="500" stroke="#18181b" stroke-width="1.6" marker-end="url(#syncArr)"/>
+  <text x="790" y="493" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">7: recordDecision(DEAN, APPROVE_AND_SANCTION)</text>
+
+  <path d="M 630 515 L 665 515 L 665 535 L 632 535" fill="none" stroke="#18181b" stroke-width="1.4" marker-end="url(#syncArr)"/>
+  <text x="672" y="529" font-size="9.5" font-weight="600" fill="#3f3f46">7.1: appendAuditHash(DEAN_APPROVED) + earmarkLedger()</text>
+
+  <!-- Tier 3 -->
+  <line x1="630" y1="588" x2="1093" y2="588" stroke="#18181b" stroke-width="1.6" marker-end="url(#syncArr)"/>
+  <text x="860" y="581" font-size="10" font-weight="600" fill="#18181b" text-anchor="middle">8: requestSecurityClearance(proposalId, venueId, slot, headcount)</text>
+
+  <line x1="1093" y1="630" x2="632" y2="630" stroke="#18181b" stroke-width="1.6" marker-end="url(#syncArr)"/>
+  <text x="860" y="623" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">9: recordDecision(SECURITY, GRANT_CLEARANCE)</text>
+
+  <path d="M 630 645 L 665 645 L 665 665 L 632 665" fill="none" stroke="#18181b" stroke-width="1.4" marker-end="url(#syncArr)"/>
+  <text x="672" y="659" font-size="9.5" font-weight="600" fill="#3f3f46">9.1: appendAuditHash(SECURITY_CLEARED)</text>
+
+  <!-- Domain Event -->
+  <rect x="215" y="682" width="465" height="98" rx="4" fill="#fef2f2" fill-opacity="0.6" stroke="#dc4c3e" stroke-width="1.5"/>
+  <text x="225" y="698" fill="#dc4c3e" font-size="10" font-weight="700">Decoupled Domain Event Publication (ProposalFinalApprovedEvent)</text>
+
+  <line x1="620" y1="715" x2="437" y2="715" stroke="#dc4c3e" stroke-width="1.8" stroke-dasharray="6,3" marker-end="url(#coralSync)"/>
+  <text x="528" y="709" font-size="10" font-weight="700" fill="#dc4c3e" text-anchor="middle">10: onProposalApproved(HoldToken)</text>
+
+  <line x1="423" y1="740" x2="252" y2="740" stroke="#18181b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#replyArr)"/>
+  <text x="336" y="734" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">10.1: transition(SOFT_HOLD -&gt; CONFIRMED)</text>
+
+  <line x1="620" y1="762" x2="252" y2="762" stroke="#18181b" stroke-width="1.6" marker-end="url(#syncArr)"/>
+  <text x="435" y="756" font-size="10" font-weight="600" fill="#18181b" text-anchor="middle">11: transitionState(APPROVED_AND_BOOKED)</text>
+
+  <line x1="240" y1="775" x2="87" y2="775" stroke="#52525b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#replyArr)"/>
+  <text x="163" y="769" font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">12: notifyApproved(EventPassQR)</text>
+</svg>

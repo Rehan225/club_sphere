@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 430" width="100%" height="100%" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <rect width="1100" height="430" fill="#ffffff"/>
+  <rect x="10" y="10" width="1080" height="410" rx="8" fill="#fafafa" stroke="#d4d4d8" stroke-width="1.5"/>
+  <rect x="10" y="10" width="1080" height="38" rx="8" fill="#18181b"/>
+  <text x="28" y="34" fill="#ffffff" font-size="13.5" font-weight="700">5×5 Risk Probability–Impact Matrix &amp; Exposure Ranking (P × I Scoring: 1 to 25)</text>
+  <text x="1070" y="34" fill="#a1a1aa" font-size="11" text-anchor="end">Top 3 Risks (Exposure &gt;= 15): R1 Grad Window, R2 Annual Turnover, R3 Venue Clash</text>
+
+  <!-- 5x5 Grid on Left (x=120..570, y=70..370; each cell 90x60) -->
+  <text x="345" y="62" font-size="11.5" font-weight="700" fill="#18181b" text-anchor="middle">Impact Severity (I: 1 = Negligible to 5 = Catastrophic)</text>
+  <text x="35" y="225" font-size="11.5" font-weight="700" fill="#18181b" text-anchor="middle" transform="rotate(-90, 35, 225)">Probability (P: 1 to 5)</text>
+
+  <!-- Column Headers -->
+  <g font-size="10" font-weight="700" fill="#18181b" text-anchor="middle">
+    <text x="165" y="84">I = 1 (Negligible)</text>
+    <text x="255" y="84">I = 2 (Minor)</text>
+    <text x="345" y="84">I = 3 (Moderate)</text>
+    <text x="435" y="84">I = 4 (Major)</text>
+    <text x="525" y="84">I = 5 (Catastrophic)</text>
+  </g>
+
+  <!-- Row Labels -->
+  <g font-size="10" font-weight="700" fill="#18181b" text-anchor="end">
+    <text x="112" y="124">P = 5 (Very High)</text>
+    <text x="112" y="180">P = 4 (High)</text>
+    <text x="112" y="236">P = 3 (Moderate)</text>
+    <text x="112" y="292">P = 2 (Low)</text>
+    <text x="112" y="348">P = 1 (Very Low)</text>
+  </g>
+
+  <!-- Grid Cells (5 rows x 5 cols, y=92..372, h=56) -->
+  <!-- Row P=5 (y=92) -->
+  <rect x="120" y="92" width="90" height="56" fill="#f4f4f5" stroke="#d4d4d8"/>
+  <rect x="210" y="92" width="90" height="56" fill="#e4e4e7" stroke="#d4d4d8"/>
+  <rect x="300" y="92" width="90" height="56" fill="#d4d4d8" stroke="#a1a1aa"/>
+  <rect x="390" y="92" width="90" height="56" fill="#dc4c3e" stroke="#991b1b" stroke-width="1.5"/>
+  <text x="435" y="116" fill="#ffffff" font-size="10.5" font-weight="700" text-anchor="middle">R2 (P5×I4=20)</text>
+  <text x="435" y="132" fill="#fee2e2" font-size="9" text-anchor="middle">Club Turnover</text>
+
+  <rect x="480" y="92" width="90" height="56" fill="#991b1b" stroke="#7f1d1d" stroke-width="1.5"/>
+  <text x="525" y="116" fill="#ffffff" font-size="10.5" font-weight="700" text-anchor="middle">R1 (P5×I5=25)</text>
+  <text x="525" y="132" fill="#fecaca" font-size="9" text-anchor="middle">9m Dev Grad</text>
+
+  <!-- Row P=4 (y=148) -->
+  <rect x="120" y="148" width="90" height="56" fill="#f4f4f5" stroke="#d4d4d8"/>
+  <rect x="210" y="148" width="90" height="56" fill="#e4e4e7" stroke="#d4d4d8"/>
+  <rect x="300" y="148" width="90" height="56" fill="#52525b" stroke="#3f3f46"/>
+  <text x="345" y="172" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">R5 (P4×I3=12)</text>
+  <text x="345" y="188" fill="#d4d4d8" font-size="8.5" text-anchor="middle">Exam Dip</text>
+
+  <rect x="390" y="148" width="90" height="56" fill="#dc4c3e" stroke="#991b1b"/>
+  <text x="435" y="172" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">R4 (P4×I4=16)</text>
+  <text x="435" y="188" fill="#fee2e2" font-size="8.5" text-anchor="middle">SLA Delay</text>
+
+  <rect x="480" y="148" width="90" height="56" fill="#dc4c3e" stroke="#991b1b"/>
+  <!-- Row P=3 (y=204) -->
+  <rect x="120" y="204" width="90" height="56" fill="#fafafa" stroke="#d4d4d8"/>
+  <rect x="210" y="204" width="90" height="56" fill="#f4f4f5" stroke="#d4d4d8"/>
+  <rect x="300" y="204" width="90" height="56" fill="#71717a" stroke="#52525b"/>
+  <text x="345" y="228" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">R7 (P3×I3=9)</text>
+  <text x="345" y="244" fill="#e4e4e7" font-size="8.5" text-anchor="middle">Receipt Fraud</text>
+
+  <rect x="390" y="204" width="90" height="56" fill="#52525b" stroke="#3f3f46"/>
+  <text x="435" y="228" fill="#ffffff" font-size="10" font-weight="700" text-anchor="middle">R6 (P3×I4=12)</text>
+  <text x="435" y="244" fill="#d4d4d8" font-size="8.5" text-anchor="middle">Scope Creep</text>
+
+  <rect x="480" y="204" width="90" height="56" fill="#dc4c3e" stroke="#991b1b" stroke-width="1.5"/>
+  <text x="525" y="228" fill="#ffffff" font-size="10.5" font-weight="700" text-anchor="middle">R3 (P3×I5=15)</text>
+  <text x="525" y="244" fill="#fee2e2" font-size="9" text-anchor="middle">Venue Clash</text>
+
+  <!-- Row P=2 (y=260) -->
+  <rect x="120" y="260" width="90" height="56" fill="#fafafa" stroke="#d4d4d8"/>
+  <rect x="210" y="260" width="90" height="56" fill="#f4f4f5" stroke="#d4d4d8"/>
+  <rect x="300" y="260" width="90" height="56" fill="#e4e4e7" stroke="#d4d4d8"/>
+  <text x="345" y="284" fill="#18181b" font-size="10" font-weight="700" text-anchor="middle">R8 (P2×I3=6)</text>
+  <text x="345" y="300" fill="#52525b" font-size="8.5" text-anchor="middle">Hosting Cap</text>
+  <rect x="390" y="260" width="90" height="56" fill="#d4d4d8" stroke="#a1a1aa"/>
+  <rect x="480" y="260" width="90" height="56" fill="#71717a" stroke="#52525b"/>
+
+  <!-- Row P=1 (y=316) -->
+  <rect x="120" y="316" width="90" height="56" fill="#fafafa" stroke="#d4d4d8"/>
+  <rect x="210" y="316" width="90" height="56" fill="#fafafa" stroke="#d4d4d8"/>
+  <rect x="300" y="316" width="90" height="56" fill="#f4f4f5" stroke="#d4d4d8"/>
+  <rect x="390" y="316" width="90" height="56" fill="#e4e4e7" stroke="#d4d4d8"/>
+  <rect x="480" y="316" width="90" height="56" fill="#d4d4d8" stroke="#a1a1aa"/>
+
+  <!-- Right Panel: Top 3 RMMM Summary -->
+  <g transform="translate(600, 72)">
+    <rect width="468" height="318" rx="6" fill="#ffffff" stroke="#18181b" stroke-width="1.6"/>
+    <rect width="468" height="28" rx="6" fill="#18181b"/>
+    <text x="234" y="19" fill="#ffffff" font-size="11.5" font-weight="700" text-anchor="middle">Top-3 Exposure Risks — RMMM Control Architecture</text>
+
+    <rect x="14" y="40" width="440" height="82" rx="5" fill="#fef2f2" stroke="#dc4c3e"/>
+    <text x="24" y="58" font-size="10.5" font-weight="700" fill="#991b1b">R1: Developer Graduation at Month 9 (P=5, I=5, Exposure=25)</text>
+    <text x="24" y="75" font-size="9.5" fill="#18181b">• Mitigation: Finish 96 SP by W16 &amp; Go-Live by W22 (14w buffer); onboard</text>
+    <text x="24" y="90" font-size="9.5" fill="#18181b">  2nd/3rd-year Shadow Maintainers in Sp 3; Campus IT holds root infra.</text>
+    <text x="24" y="107" font-size="9.5" font-weight="700" fill="#dc4c3e">• Trigger Gate: Week 21 solo deployment &amp; DB recovery drill by Junior Team.</text>
+
+    <rect x="14" y="132" width="440" height="82" rx="5" fill="#fafafa" stroke="#27272a"/>
+    <text x="24" y="150" font-size="10.5" font-weight="700" fill="#18181b">R2: Annual Club Leadership Turnover (P=5, I=4, Exposure=20)</text>
+    <text x="24" y="167" font-size="9.5" fill="#27272a">• Mitigation: Role-bound institutional club accounts (FR-10); Annual</text>
+    <text x="24" y="182" font-size="9.5" fill="#27272a">  Handover Wizard co-signed by Faculty &amp; Dean; 5-year persistent ledger.</text>
+    <text x="24" y="199" font-size="9.5" font-weight="700" fill="#18181b">• Trigger Gate: Faculty force-handover override if outgoing leader defaults.</text>
+
+    <rect x="14" y="224" width="440" height="82" rx="5" fill="#fafafa" stroke="#27272a"/>
+    <text x="24" y="242" font-size="10.5" font-weight="700" fill="#18181b">R3: Concurrent Venue Clash / Orphaned Lock (P=3, I=5, Exposure=15)</text>
+    <text x="24" y="259" font-size="9.5" fill="#27272a">• Mitigation: PostgreSQL GiST exclusion lock + 30m buffer (FR-03);</text>
+    <text x="24" y="274" font-size="9.5" fill="#27272a">  instant SOFT_HOLD release on rejection; 24h TTL on revision holds.</text>
+    <text x="24" y="291" font-size="9.5" font-weight="700" fill="#dc4c3e">• Trigger Gate: Auto-escalate to Backup Approver at 24h tier inactivity.</text>
+  </g>
+</svg>

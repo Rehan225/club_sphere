@@ -1,0 +1,1527 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ClubSphere | ITM Skills University — Student Club & Event Governance Platform</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+:root {
+  --ink: #111113;
+  --crimson: rgb(160, 25, 81);
+  --crimson-d: #731039;
+  --crimson-l: #C22568;
+  --blush: #F7E8EE;
+  --paper: #FAF8F9;
+  --card: #FFFFFF;
+  --line: #E6DCE0;
+  --blk: #141115;
+  --blk2: #231D24;
+  --amber: #D9822B;
+  --amber-d: #8F4F0A;
+  --red: #C0392B;
+  --green: #1E7E5A;
+  --blue: #3B5998;
+  --mut: #685B60;
+  --serif: "Fraunces", Cambria, Georgia, serif;
+  --sans: "Figtree", Calibri, Carlito, system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  display: block;
+  min-height: 100vh;
+  background: radial-gradient(950px 520px at 100% 0, #F5E1E9 0, transparent 62%), var(--paper);
+  color: var(--ink);
+  font: 14px/1.5 var(--sans);
+}
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font: 700 20px var(--serif);
+  color: #fff;
+}
+.brand img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.85);
+  background: #000;
+  object-fit: cover;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+}
+.brand-sub {
+  display: block;
+  font: 500 11px var(--sans);
+  color: #F7E8EE;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+.st {
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 99px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.st.open { background: #D1EADF; color: #0E4333; }
+.st.closing { background: #FBEBD0; color: #7C4408; }
+.st.closed { background: #F7DCD8; color: #781F15; }
+.st.crimson { background: var(--blush); color: var(--crimson); }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 0 rgba(20,17,21,.04), 0 6px 18px rgba(160,25,81,.05);
+}
+.card h3 {
+  margin: 0 0 12px;
+  font: 700 17px var(--serif);
+  color: var(--ink);
+}
+.grid { display: grid; gap: 16px; }
+.g4 { grid-template-columns: repeat(4, 1fr); }
+.g2 { grid-template-columns: 1.3fr 1fr; }
+.g3 { grid-template-columns: repeat(3, 1fr); }
+.hero {
+  background: linear-gradient(135deg, #111113 0%, #24131B 48%, rgb(160, 25, 81) 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 26px 28px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 26px;
+  align-items: center;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 28px rgba(160, 25, 81, 0.16);
+}
+.hero .big { font: 600 52px/1.05 var(--serif); letter-spacing: -.02em; }
+.hero .big small { font-size: 19px; color: var(--blush); margin-left: 8px; font-weight: 400; }
+.hero p { color: #F2DCE4; margin: 10px 0 0; line-height: 1.55; }
+.bar { height: 11px; border-radius: 6px; background: rgba(255,255,255,.18); display: flex; overflow: hidden; }
+.bar i { display: block; height: 100%; }
+.kpi small { color: var(--mut); font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.03em; }
+.kpi b { display: block; font: 700 26px var(--serif); margin-top: 3px; color: var(--ink); }
+.kpi span { font-size: 12px; color: var(--mut); }
+table { width: 100%; border-collapse: collapse; }
+th {
+  text-align: left;
+  font-size: 12px;
+  color: #fff;
+  background: var(--blk);
+  font-weight: 600;
+  padding: 9px 10px;
+}
+th:first-child { border-radius: 6px 0 0 6px; }
+th:last-child { border-radius: 0 6px 6px 0; }
+td { padding: 9px 10px; border-bottom: 1px solid #EFE6EA; vertical-align: middle; }
+tr:hover td { background: #FCF7F9; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--mono); font-size: 12.5px; }
+.tier { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; }
+.tier:before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.t-confirmed { color: var(--green); }
+.t-softhold { color: var(--amber-d); }
+.t-pending { color: var(--crimson); }
+.t-rejected { color: var(--red); }
+.tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 5px;
+  background: var(--blush);
+  color: var(--crimson);
+}
+.tag.blk { background: #E6E4E6; color: var(--blk); }
+.tag.ok { background: #D1EADF; color: #0E4333; }
+.tag.warn { background: #FBEBD0; color: var(--amber-d); }
+.tag.late { background: #F7DCD8; color: var(--red); }
+.btn {
+  font: 600 13px var(--sans);
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--crimson);
+  background: var(--crimson);
+  color: #fff;
+  cursor: pointer;
+  transition: all .15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn:hover { background: var(--crimson-d); border-color: var(--crimson-d); }
+.btn.blk { background: var(--blk); border-color: var(--blk); color: #fff; }
+.btn.blk:hover { background: #2c262e; }
+.btn.ghost { background: transparent; color: var(--crimson); border-color: var(--crimson); }
+.btn.ghost:hover { background: var(--blush); }
+.btn.amb { background: var(--amber); border-color: var(--amber); color: #fff; }
+.btn:disabled { opacity: .42; cursor: not-allowed; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.sp { flex: 1; }
+input, select, textarea {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  min-width: 0;
+}
+input:focus, select:focus { outline: 2px solid rgba(160, 25, 81, 0.25); border-color: var(--crimson); }
+.steps-nav {
+  display: flex;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: 0 2px 8px rgba(20,17,21,.05);
+}
+.s-tab {
+  flex: 1;
+  padding: 12px 14px;
+  background: var(--card);
+  border-right: 1px solid var(--line);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all .15s ease;
+}
+.s-tab:last-child { border-right: none; }
+.s-tab.active { background: var(--crimson); color: #fff; }
+.s-tab.done { background: #F9EFF3; color: var(--crimson-d); }
+.s-tab .s-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font: 700 12px var(--mono);
+  background: rgba(0,0,0,.08);
+  flex-shrink: 0;
+}
+.s-tab.active .s-num { background: #fff; color: var(--crimson); }
+.s-tab.done .s-num { background: var(--crimson); color: #fff; }
+.year-card {
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 18px;
+  background: #fff;
+  cursor: pointer;
+  transition: all .18s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.year-card:hover { border-color: var(--crimson); box-shadow: 0 6px 18px rgba(160,25,81,.09); transform: translateY(-2px); }
+.year-card.active { border: 2px solid var(--crimson); background: #FDF9FB; box-shadow: 0 6px 20px rgba(160,25,81,.14); }
+.chk { display: flex; gap: 10px; padding: 9px 0; border-bottom: 1px solid #EFE6EA; align-items: flex-start; }
+.chk i {
+  width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--line);
+  flex: none; display: grid; place-items: center; font-style: normal; font-size: 12px;
+}
+.chk.ok i { background: var(--green); border-color: var(--green); color: #fff; }
+.chk.wait i { background: var(--crimson); border-color: var(--crimson); color: #fff; }
+.hash {
+  font: 12.5px/1.6 var(--mono);
+  word-break: break-all;
+  border-left: 4px solid var(--crimson);
+  background: var(--blk);
+  color: #F7E8EE;
+  padding: 13px 15px;
+  border-radius: 10px;
+}
+.hash.bad { background: #3A1212; color: #F5C3B8; border-left-color: var(--red); }
+.hash b { color: #FF85B3; }
+.field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+.field label { font-size: 12px; color: var(--mut); font-weight: 600; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.toast {
+  position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+  background: var(--blk); border-left: 4px solid var(--crimson); color: #fff;
+  padding: 12px 20px; border-radius: 10px; z-index: 99;
+  box-shadow: 0 8px 30px rgba(0,0,0,.35); animation: up .25s;
+}
+@keyframes up { from { transform: translate(-50%, 10px); opacity: 0; } }
+.pill { display: inline-flex; gap: 4px; border: 1px solid var(--line); border-radius: 99px; padding: 3px; background: #fff; }
+.pill button { border: 0; background: none; padding: 5px 12px; border-radius: 99px; cursor: pointer; font: 600 12px var(--sans); color: var(--mut); }
+.pill button.on { background: var(--crimson); color: #fff; }
+.sc {
+  display: inline-grid; place-items: center; padding: 2px 7px;
+  border-radius: 6px; background: var(--blush); color: var(--crimson);
+  font-weight: 700; font-size: 11px; font-family: var(--mono);
+}
+.top {
+  background: linear-gradient(105deg, #0E0C0F 0%, #1F1218 50%, rgb(160, 25, 81) 100%);
+  color: #F7E8EE;
+  padding: 13px 32px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--crimson);
+}
+.top select {
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  border-color: rgba(255,255,255,.28);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.top select option { color: #111113; }
+.chipx {
+  font: 600 12px var(--mono);
+  padding: 5px 11px;
+  border-radius: 99px;
+  background: rgba(0,0,0,0.28);
+  border: 1px solid rgba(247,232,238,.28);
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+}
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); }
+.dot.open { background: #6EE7B7; animation: pu 1.6s infinite; }
+.dot.closed { background: #F87171; }
+@keyframes pu { 50% { opacity: .35; } }
+.tabs {
+  display: flex; gap: 4px; padding: 10px 32px 0;
+  background: var(--card); border-bottom: 1px solid var(--line);
+  overflow-x: auto; position: sticky; top: 0; z-index: 10;
+}
+.tabs a {
+  padding: 11px 15px; font-weight: 600; color: var(--mut);
+  text-decoration: none; border-bottom: 3px solid transparent;
+  white-space: nowrap; cursor: pointer; font-size: 13.5px;
+}
+.tabs a:hover { color: var(--crimson); }
+.tabs a.on { color: var(--crimson); border-color: var(--crimson); }
+main { max-width: 1260px; margin: 0 auto; padding: 26px 32px 70px; }
+.ttl { font: 700 28px var(--serif); color: var(--ink); margin: 0 0 4px; }
+.lead { color: var(--mut); margin: 0 0 20px; max-width: 82ch; }
+.plant {
+  padding: 12px; border-radius: 10px; border: 1px solid var(--line);
+  background: #fff; text-align: left; transition: all .15s;
+}
+.plant:hover { border-color: var(--crimson); box-shadow: 0 4px 12px rgba(160,25,81,.08); }
+.plant b { font: 700 14px var(--serif); color: var(--crimson); }
+.plant div { font: 12px var(--mono); margin: 4px 0; }
+.cert { position: relative; overflow: hidden; padding: 30px 34px; border: 2px solid var(--blk); }
+.cert h2 { font: 700 24px var(--serif); color: var(--crimson); margin: 6px 0; }
+.dag { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.node { border: 1px solid var(--line); border-radius: 12px; padding: 14px; background: #fff; }
+.node.on { border: 2px solid var(--crimson); background: #FDF9FB; box-shadow: 0 6px 20px rgba(160,25,81,.12); }
+.node small { color: var(--mut); font-weight: 600; text-transform: uppercase; font-size: 11px; }
+.term {
+  background: var(--blk); color: #F7E8EE; border-radius: 12px;
+  padding: 16px 18px; font: 12.5px/1.75 var(--mono); min-height: 220px;
+  border-left: 4px solid var(--crimson);
+}
+.term .ok { color: #6EE7B7; }
+.term .bad { color: #F87171; }
+.term .d { color: #FF85B3; }
+.warn {
+  background: #FFF5F8; border: 1px solid #F0C2D4; color: var(--crimson-d);
+  border-radius: 10px; padding: 10px 14px; font-size: 13px;
+}
+.steps { display: flex; gap: 0; margin: 6px 0 18px; }
+.step { flex: 1; padding: 14px 16px; border: 1px solid var(--line); background: var(--card); position: relative; }
+.step:first-child { border-radius: 12px 0 0 12px; }
+.step:last-child { border-radius: 0 12px 12px 0; }
+.step.done { background: #F9EFF3; border-color: #E6DCE0; color: var(--crimson-d); }
+.step.cur { background: var(--crimson); color: #fff; border-color: var(--crimson); }
+.step b { font: 600 15px var(--serif); display: block; }
+.step small { display: block; opacity: .82; font-size: 12px; margin-top: 2px; }
+.slot-pill {
+  display: inline-block; padding: 4px 8px; border-radius: 6px;
+  font: 600 11px var(--mono); margin: 2px;
+}
+@media print { .top, .tabs, .steps-nav, .noprint { display: none !important; } main { padding: 0; } }
+@media(max-width:920px) { .dag, .g4, .g3, .g2, .hero { grid-template-columns: 1fr; } .top, .tabs, main { padding-left: 16px; padding-right: 16px; } .steps-nav { flex-direction: column; } }
+</style>
+</head>
+<body>
+<header class="top" id="top"></header>
+<nav class="tabs" id="tabs"></nav>
+<main id="view"></main>
+<div id="toast" class="toast" hidden></div>
+
+<script>
+"use strict";
+const LOGO_SRC = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wAARCACMAIcDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD8/wCiiigAoorU0Pw7rHiO/wDsmkWT3DgbnbokY9WY8KPrQNJt2Rl1e03RtW1ifydL065u39IYy2Pxr3n4efAGXVZVkGnPrcyczzyN5Nha+7ucbsemR9K9Zj0P4ZeG7RrfV9avPE1xbgMdN8NILezjx2afHP1A59atU29T2sNkdapb2mnlu/8AgfM+UrX4Y+JpgftH2OzO3cEnnG5h7Bc1rWPwY8RXyfu5GL/3EtnfP4ivqfRfGQmt7+fwv4T8LeGNM06NZri/ns2v5FDNtXBfJ3k8YHHeqfib4jfEbT7uC3j+IE1/Z3Ful3DNZIsMe1iRtACgjBBBFWqaPeocLwk+Vp383/kj5zk+AHjSKPfLZ3qL/eNjLj+VYd78KPENrcCJHjbsWlVogD6HIr641TxL4q0v4a6H4si+IHidrnUpJFaCSVSsYjOHIPf2H51qxeMfG914507wnB43h1s3sUZRdd0uNoQ8ihkRgB6EZboKr2SJlw7Rado7b6vp6o+Eb3wj4isI/Mn0yUpgndH84wOp47VisrI21lKkdiMV96z3ulazr2q6T4n+E8Ut7YOYby68NloJoyGwWMXKlOM8D0zjNclqHwY8J+OY5/8AhDNWttamGS+mamq2WoRk/wBw/dc8dAazdNrY82vw80uanL7/APNHxtRXpHjP4Raz4b1CaC2gummiYrJY3ERSePHt/F/OvOGVkco6lWBwQRgis2rHz9ahUoy5aisJRRRQZBRRRQAUUV1/w+8Et4w12T7XM1ppFmolvboLkgdkX1djwB+PagqEJTkoxV2yTwN4CufFM5v76RrLRYHCzXWPmkP/ADzjHdj+Q719U6J4B8O+CfDVvfeLbOfT7KXEun+FrNs3d96STvjKL3yeeuAKv6DpGnfD/wAL6d4i1TSbdtSeLd4e8PspKW0QP/H3cD043DPU8mmv4ouPCnxVkvdfltfFKajbRtqF4Uy8kcsZ3i3fPyAA8EdcY6V0Qgran2uVZR7NcyV5f1ov8xfF+oeIfEPwxt9fi1Cyt9BhvFtI9A0kFYbEMpKmb+8xPGTnJ71X8ATT654O8SfD13XzLi0a/sMIFYzQHeYwQMkFc8HPIGK19P0iLwb40ltJ5Pt3w98R2fltqJOYxAwykme0sbY46k8DrWP4ev7+3vbfQvhrp0+tanBdtepq01uFZTs2ZWPOEUKScuevOKfqfQU52oOEV2af+Ynwx07xhbaZq3iLw5LYpEIzbS22pRo8F6MbzGwfC8Yzz0OB3qp8QbnTb3TtJuH0bTdJ8RMZRqNrphHksuR5bkAkI554HYV1Fj8MtT8R3Jh8R+JL3VrkN8+meHITetAc9C42wxnPWu80r9m65ntRt8ASgjpJrWvCJmH+1HAhA+maexhLM8JRre3qS18v61PH7ybTfE/wr8N6RDrdjYXeji4iuba+Zk8wSNuEqEA5x0K9eKlt/wDiYa7rniXS7mGWKwsPJtEMypLK4iSEyLGTuwF3v+Ve5S/s13/lAr4G8Kk45EesXaN+B2nmua139nhraBml8GeI7BEGRNpd9HqiZ9422vge3NK6MaWd4OV0pWu3+LOM8XXqzeCY/iHazeVda/YRaZP5b4kFxG3+kMceqpEc/wC3is/xJaWmj6d4O8FT6dHN4hnRLm5vIhi4thM4McKsMZIXnJz1px8BeJNKlWXw7daf4pt7CXz20uWFknibIyz2kmHycDlc9M1U8PeJ7PU/2hYfF/iiYafFHdm/nSViyxSRpkJg8kFgAF/Cqujto2nFulJOKu/PyR0OtarYW/ia/wDA3jFbjxjpelsYU1u3i26jpwU4zv8A+WgBIyDx9K8T+LfwM+z28HiHQruG/wBNuwRaatbg+XOeuyUdY5O2DXoFlquqaj4wbTfAUV3JqWpzuHvCB9ouVdiWXHSKIZ6eg5PautgfT/Bt/faHolwPEdjb2qp4o0V1JglI4kmt2PRkJGSMYOO3SHHmPPxuAp1IqnPVtbfr5P8AM+BLq1uLG8ktbuF4ZoztZHGCDUNfUnxf+D2l3Fpa614duvtWmahGZNJ1E53MRybacdnXpn8elfL9xbzWl1JbXMTRTRsUdGGCpHUVjKLi7M+ExuClhZ8r1XR/11I6KKKk4ya0tLi+v4bK0iaWeZxHGijJZicAV9k/C3wVo2g+G/tWrQiTQPDoWe9XBzqWov8AchHqM8eyg+tfP3wb8PSXmuz+IGhd/smILMD+O5fhQPcDJ/KvpT4hXzeFRovw/wBLnjl/sErdX7kZE1++Gff2IUbVH41pTXU+p4dy91Z+06vb0W7/AELs/ibxJoXjKbxT4hsdJ1x9aTyNQ04SCWWCA5H2bA+aEhcdPTr1rd8Qr8OT4O03xHp/hB9e0OOBLX7UdYNrdQOuf3MiY5cZ4K5yBmszRPGc+qXF5D8OPC+h+HdZuWNxe6jf3yySODkt5XmjCqDklRk4rItbC38bfEHUrmS6MHhewkF5qE1rGUQttVWMUf8AflYYUD17Vvex9Q6KT56vucu9n0JdG0e98bW9vLdG70nwhZXDRWen2amWS4lYk+TAp/1sp/ic8DOeK+n/AAP8EE/seKHxBbLpWkEBo/D9hJ/rB2N5OPmnf1UEKORzW58Kfh6NMitvE2u6dHbaiYRFp2mrzFpFsekSD/noRy79SSRmvVxheg4rGcz5DNc6qV5ezpO0UU9L0XStG06Ow0qwt7O2jACwwRhFHboKvALjAFJvQDkgexo3c96zbPnW23djsd80mFNLRSEcz4q8C+GfFsKf2xpqPcx/6m8hJiuIT6pKvzKfxr5y+LHweW0ge+8TSvdWg+WLxVbwAT2p/hW9jUfvU7eaACOpr60wD1FQTwQ3EDwTxJLHIpV0cZVgeoI7iqUrHdg8fWws1KDPzttbrV/A66v4FvlttJu9RhCwa4I92YmboJV6wyD+JeR+dW5NA8ceLfEjaRp93YiysbRLa81G2ZktEiADM0szAGUnaCSM5wAMivZvi98I9OsIYtGBMOhXsxXRrtj/AMge8c5Fuzf8+8pyADwrY6V5D4J8Sa9Dr1t4e8T3U8UXhWG7uYNOYktcXCKVSJlH3ypPQ9uK3jqfe4fG/WqTxFJLn6/5k+lTeFLK1m8MRai2p+CtZmSwuL54yq2epLHxcxA5IQnt6Zz2r5o+Nfw51XQdbvLiezCXmnv5N8I+Q6/wTD2II575Br3+5j8beNfDt1Y+IbnSPD+laE6yXXn24tkSeYfLlY1JLsM9egFTeMbN/Efwut9W1dEm1LQz/YWt+Wc/aLV1/cTZ/i44z7A0pxujkzLBKvR5X8T/AAfT7+p8J0VqeI9FuPD3ii90e5Uh7eQqCf4l6qw9iCDRXOfAtNOzPrz4L+D7Lw1c+HftasyaPpcvifU93AMm3MaAf3gfLHP9a3NDn8B+MfDctr4mtNXHiY3c941zYTIHn81txVUfhyvPy8NjpnpWleKg0P4najbRyj7Zq9r4fhS3HzlA+7CjuSsYGPelvPHnhaxuGtLbwFpnhS7t8gNf6WLthj7ruQQytxngGumKsfouAounSUIp3SWztbq/zOI8U+GPC+leHodV0Txa2sCa5NukTWTW8kOxdz+YpJO7kAY96+hPgh8PVe+0jRrqANDpSR63qpByJr2Uf6PE3qI4/nx/eYZFeO3Vm3iv9oDSdP1O+sr8yywS3lxp8At42UL5shC45woGSeT36V9i/A2zRvhk3iV1Xz/EF5Nqjuq7SyO5WLI7YjVRSm7Iw4gxs6eGjTlK7Z8q/thfG/4g6J8YZPh74b12+0HTLG1hmleyfy5Lt5F3bi/XavTaO4r079jD4t+NPiH4R8Q6H4x1CfVJtGaFrfUp+ZXSQN8jt/EQVyD1/KvOf2vfG/wtu/jQfCnir4fape6rpdtDnW9N1FbWYpIvmCPayMGUZ7jg5xXPeAP2sPA/wk8FyeHPh58I5baKRjLLcX+qb5J5MY3yMEycegwPTFc58DufOOreIPEEniLUWfX9WLNdzbmN7Lk/vG/2q/S/9ke8vdQ/ZH8LXGoXlxdzf6QpluJWkcgTuACxyTivy6nma4vJrl1AaWRpSB0BZi39a+oPgz+1/D8Kfg5pvge58Dy6mbF5St1FeiMOHcvyCpwRuP6UBY/RU9KB1r4pX/goNp5Yb/hpdhSQDjUFzj/vmvsjSNRi1fw/Y6rAjJFeW8dwiuckB1DAH3waBNF+kIBrzjxB8a/Anh34xaJ8MrvUZJvEOrOESC2TetvkHb5p/h3Y4HXv0r0RiFUksAAM8mgDJ8U+HtO8U+E7/QNTiD213CY29VPZh7g4I9xXwx8RdP1bw34i0zxm6k63pl+umasyfKZp4cNHPnt5sWOcdQetfX3gr4y+BviH468QeE/C1/JfXehFRczpGfIfJKny36MAQRkcV5J8f/D0b+JtZt4oAx13QzeRIBjdd2LhgSe37pyPwrSm+h73D+KdKvyPZnhj3umD4f6v4f8AD8GseIdV8RapbalNbPZOvkLGzMFdwTvL7yNwOOK6HQtE8UDxbNaeM9Oi0xfGdpNpP2LYqfZ3jQNAWUE7cbeM8kD3ri9I8UfEu78BafovhL+1VsoJHgZtKUmSZmO8LIyjcFwTjJx6VqWXhvxP4X8Mr4k8ReGtcsLzTr+2vheXlwSswEgDqIycj5T97PfFbJn2lah7NSjzLV3t18v0Pmv41aRLGdH1qYYuNsmm3WevmQthSfqpA/4DRXpv7TmjQWd54vtUVcW2sRX6MOwnXO0e3zUVzzVmfnuaU+TEyt11+89d8P8Anz+BdHeOOR5L3xyJZEQ4ZtihsA+vJxXN6gfhPJrN1Bqdh8QLO7MhErXFxBI6NnnIK5NbUEGnx/C37PrJdbTTPGiw3m1ipjjkQgkEc5wprnp9R+DSzOw0PxvckHhpb+BQ2On8OefeulH6Bh4uVSUkpPXp8jR8KnSofivrt94cd5NOstKvZ7GQ9WAtiuW98k/rX3d4AtFsvhX4dtVVVEemW4wowB+6U/1r4N8Hz6Vqvxp1W20GA22n6npt7b20MowYwbYkA++VNfdfw01BNW+D/hnUIjlZdMt/zEYU/wAqyqHg8XX9pC66Lc/Or9sk4/bD8RAj/l1sv/RC1S+BH7O978cNL8QX1t4nh0ddJMaKj25l813VjycjA+Xr71c/bKP/ABmL4hH/AE6WX/oha9w/4J/8+EfHYHe5tf8A0XJWJ8efDk8f2e+mtWO5opGiLdASrEZ/SvevD37NSa9+yRd/Gk+L3t54IJ7lNM+xhkKxOUIMm7IJwTwPSvCdSBGv3+T/AMvc3/oxq+8vh5/yih1D/sF33/o5qAPgTI27xz3/AMiv0M+Jv7T+g/Dj4EeHdJ8FanY6v4qvdHt1iMEiyx2A8pQZJMcbgc4Q85HPFfnkn+qH0pVG0EKoXJ5wMZ96BWPT/gx4ieb9rDwn4l8TaxmWbWUnu7+9mxuZjyzu3A5P0HFfQP7VH7Uhvjd/DX4ZamDa8xarrNs/+t9YIWH8P95x16Cvi/APBAP1pQABxge3pQFj7D/4J+gnx/4zJwP9Ag4H/XQ19IfHC3Rtd8FSbQGnvbuwY4/gls5Qf5CvnD/gn7/yP3jQf9Q+3/8ARhr6O+OF3EPEHhG23ASW8t7qQBPUQ2j/ANWFXDVnZl6f1iNj4i0zXvEvh7w3f2mh6je2Vg9whuZbaQpuKqyqjEHoRk49RXSeHdG8S33w98Ua/qGmXMllJYMo1W/uHVUGVLeUh/1jEgc9AMmuf8M+PNf8KWF5HoM8NtLfsjzSvCkp4zgAMCO+c1r6x4xi8a2N7d+KdQv4dUgsDHbCGXbbXDZUBTGOEJGSdvBx0Fb2P1TEUqvJdQSWmu7Oa/atmfzXuAyltQsNNmlIPLN5ecn8qKT9q2J1uru1AA/s21060kOc/MIgf60VhU+I/Ns7/jx/wo9c8SWClvi14atcNEZoPENqc8yDdl2HqoVzz7V4efmJIO7nOa9P+Gvjax8QWPgPxhdSEW93Zv4S10vz823aGJ9CrK2fauSl8G6jb+NtS8M3NzZ2UunvKskt7J5abUPXueV+YDqRWt9j7/h3GwdL1Sf3aMqeE9ZHh34gaNrj8x2d5HLIucbkzhgT6EE197fArU408H6n4TMm+TQr+SGM4wGtpD5sDL/s7HwPpXwlreiaZaaHb3+i6o2pwrI1tdTGLywJOSpVTyFIyAW5JBr3f4JfEQ2B0zxBcynFmiaLroHU2xP+iXRH+wxMbN2B9KUo3OTirC/WqCrU9bHhH7ZfP7Y3iH/r0sv/AEQte+fsB6ZqNt8PfGGrXFnLFZXt7CtrO64WYxo4cr6gEgZ9au/EH9lzV/it+2PeeNNduIbfwTPa2rySQTAz3JjjCGFR/CCQct6dOa+qNF0TStA0C00TRbCCw060iEMFrAoVI0HQAf5zWLR+aPTQ/F/VGI8Q34OB/pc3X/ro1foF4U0bVtA/4JZX+n61YzWV2dGupzBMu1lR5WZCR2ypB/GsH4Efsh3emfES/wDGvxUsYGW1vpX03SN6zJKfMLLPKRwV5BVfxPpX078UvC194z+DPiXwnpUsMV5qWnyW0DSkhA5HGSOg460gZ+Qvh/Q9W8S+ILLQNC0+e/1K8kWKC2gXc0jHsPT1J6Ac1758a/2bLP4N/AHw/wCJb7WLq78S3N8trfxIw+zJuQttj4ydpGN2ea+s/wBnT9nLSfg14d/tLVzb6j4xvI9tzfRjKWyH/ljCTzj1bq30q7+038I/EXxh+FumeGvDVzY29zBqsNzJJeMVVIgGVmGAckZ6d6AufnD8OPhx4o+Kfju28K+FbMy3EnzzTuMRW0WcNJIewHp1J4FekftMfBLQPgnq3hXTNDv7++lvrBpLya6YEPKjYJRQPlB/u8/Wv0A+D/wf8L/B3wJHoOgRebdSYkvtRkUebdyY+83oo6BegFee/tDfs8aj8bPiB4Qu01i30/SNPWSLUjz5/lswb90Om44I56daAueQfsBaHq0Wo+L/ABPLYyppU0MNnFdEYWWVWLMq+uARk9Bmu2/aC8UJJrPiq6hbKabpsehW7f8ATzcsJJSh9ViRcjrzXuWqTeHPg78HEttD0tIbSwiW007ToPv3EzHakY/vMzHkn3Jr4h+K+uSyalD4W+3fapbGWS61SdTkT38p3SkHuqDEYPbaetaQ01Po+G8E6+J57aI84A6YrX8KaQ+veOtH0eNSxu7uOIqBn5SwLfkAa6CLwTp8+jwPJqhs77PlvEf3zvIRkKYh80Kr/E78dxmrfwyT+xJ9f8dT5EegWUhtnHRrqT93EAe5GS3uBWx+mYrFwdCbhutPmeU/tQeI4tV8bam8MzN9p1J1Tb9x4YhsU/XgUV5z8W79pfF8GmGQObKAeaV6GV/nY+x5GfpRXPJ3Z+PZnVVTEya2Wn3aHY/s9+I7e4l1j4Z6nKFh1xVn05mOBHfRZMfPbcMr+Ve5+MUbxJ4R0j4jC38y8tXTS9ehZTlZ4uEdx1w6jB75FfEVle3WnalBf2UzwXMEiyxSocFGByCK+zvh38RNN1/Q28ZX8Ky6XqqDSvFmmRD/AFUhHy3SDsSRuB/vAjvVQfQ9bh/HujP2fXp+qNnT1uda8Mardaotvb+HGsGe20zTEzskLfuh7S7hj5ssQGPArjtA1fWfAnitLm60xwWiMV3pt2hQXMDjDRuDzhh0Pbg1talHqvww1+606Bo7+1u0FzpeoOC0Min7k6LnYz7eDkHBqK/0WK/uLf8AtfVtRudXuoFu7i8dla1tfMUuiyuckkhScggDpg1o7n6BTcJRanrCR9WfCT4nWVtp2naLe6nJd6BdYi0bVrk/NE3/AD43Lfwyp0Vj98Y7174pDKCK/MjQtf1rwTqk1pc6eJLO6RVvdKvUPk3cZGVJB5BHVXHI6ivpn4afGu5FtHbaTcT+INOjTnSLpwNVs1HaMkgXUY7chxgdalxvqfD51w7UoSdSjrFn1AAAaXaDXK+GviH4U8VL5elavD9rUfvLGfMNxEemGifDD8q6ndWVj5SUJRdpINoBzRjI4FKWXHUVFLNHDEZJJFRByWYgAfiaROpJtArN1zWtM8P6LcatrF9DZ2Vum+SaVsBR/j7d64zXvi/4es55tN8OrL4j1RMhoNOIMcJHeWY/JGB3yc+1fM/xH+NDz6kJbzULLXtWiYta2lrltM01uz8/8fMw/vH5R2FaRh3PVwGUV8XNJLQ1/i78XLuS8j1ieJ7a+ZHXQtKlGGso2G1r+cdpWHEanlQc8V4P4V0FNX1eK51JwbRpiu03i20lxJwQqO2QGyRkn165NP0nRdY8ceJJdT1G6nm+0TZmupfv3EhG7y484DSMAcLnHFdBf3PhafwXchNJg+z21wFfTp5WguraYjaXibnerhQXRuVI+laJH6RgsHHAUvZUleT38iv4r1ZYtPOmWdgkN5JKbdpGvJpNQwpG6KYNgkHIABJzjipPiDqFh4B+G9j4OvJEWWzX+2NbCEfPcso8q3yOu1cZHqxNXPDQj0i2u/i74ot45H88poljJ927usYD88mOPqT3PFfLfxZ8X3Gv+Kbi1N61yfNaa7m3bvNnJJJz3xnFKT5UePnmYRw9Lkg9V+f/AADhNSv59U1e51G5YtNcStK5JzyTmiqtFYH51uFdX8P/ABzqHgPxUuo26faLKdfIv7Fz8l1CfvIw9e4PY1ylFA4ycXdbn3P4c8QeE9b8F2+ianqLXng3UJDJpOq43z6HcHrG69dvZl79RVK9XWfAGrLoPiiF77SMfarWOIq9tekAmJt2MyRA87M8c18h+F/F2r+FNR8/T5t9vIR59pIcxTD0Yevoeor6Z+Hnxk0fWvDY8Na5p41rQclzpU0m26sD/wA9Ld/b8j3FbKd9GfaZRnSmvZ1Xr27+a8zsvF91o+rWwv7lJbpRfva2KWMu+a8aREeR2dgQFBZVRFAx9M1zGseD9b0O+LW6vLsupbe3eBsTO0WCzBQc8Z5YcZBrpW8Iata6c/iD4V6/Nrmnj55IoAovrM4/5aQkE5Gfvp+lYMfiGC5OnrLczWN9bW66cJpM7LYljvnyPmDncxIx1JPtVvY+twtS8UqTvFdHuWrP4p+JYPLt/ENvZeIY4AAi6rDmeLHQLMuJF/Oux0r46ixRVB8YaWe66frfnRL/ALqTKxx7E1z2rajofjLxvY+GbaD7Na/2gIv7SeRGYwhAiqhA6Ntz8xJ3NUOk+FdG1iO3u5NNuNPR7u8thE1yRvWGBpA+X5GGUKe3ze1K1zKtg8FOHPWp2fkd5J+0LmF/+Ku+IDY/gD2sef8AgWw81zer/Ga31EnPh7UdVdlxu8Q6tLdKD6+Wm1PzGK5G00DQ59X1a1UXcq2WlyXmEnVg0qYJUOByhB4PXit9PDHhqPOoaZYvqFtG1rJcWtxcbZrUNt3L2V0bcNr+xBxT5TGnlWApu/IzntQ8X+OPGRGlQz3D2g+7pmmRCG2T/tmgA+uc1bsfBkWnyXLeIX8+8trZrt9HtZP3jxgjJL9MYIbA5K5IPFb9/qlhpmoNo8moSWGnXunTQOrWi28tpOj7o5JFiJ3MWAww/hJrD0vU9f1zWdDg8NaZd3uv6bA1t9rhXf5qc7Nw7bVJGT2x6U3od0Z8i5aSUYjdcn06Tw3NJpupxx6XPsuLHT1nPn6fcZAdFXrs4J3HgjB61qafpA8QRD4g/Eqc2mgxYjAVBHNqjrjEcXQtk53SHPemy6J4L+HaNqPjq/t9e12PDpoNpMpghbrm5lHB5/gX+VeB/E745a54s1VnjvVlYL5cZjXbDap2jhTooAxzUOVjx8xzinh4Plfz6v0/zNv41fGO41vU3tLVI7do4fstpZwDbFpsHZEA/ix1P1NfPpJJyTknvTnd5JGkkYu7HJZjkk02sW29z87xeKniZ88vkuwUUUUjmCiiigAqSC4ntbhLi2meGVDlXRsEH61HRQB6Z4U+MOs6JfRT3UtwtxGcrf2bmOcc55wQG5r3TSfjx4U8YxR2/jjQdL1+Zl2fbEY2V/z6uvDe5I/Gvj+irU2j1cNnGIo2Td0u+/37n2+mi/CfWiJ9G8daposjfMsWs2gkH1EkRwB7mrtr4K8QHUPtGhfFHwvqEojMQKantcIw5GJBxkdcda+JLXXdZss/ZdTuY/l28OTx6c1qQ+PfFENsIRqAcDoZI1Yj8SKtVe6Pdo8UyS5ZX/B/5H1/afDbxnpk00lt4l8N2IljMUko1aE7kPUEc8HuKbc+CrMn7R4m+LXhmMIgiItppLuXYOi7FUZHA49q+Qx4+8TDpeR49PKXmqt54v8AEV7MZJdSlQkbcRfIMemBT9qrbG1Timysr/cl+rPra61T4HeEIy9zNrHim6QZPmsthbMQeTjlz9K4Lxb+03eHS59D8KwWujaYTgWejJ5CN/vyfffPXk183S3E85zNNJJ/vMTUdZubPFxOfVqr9xW9df8AgfgbWteKdX11yLu4KxEkiFOF/wDr/jWLRRUHiVKk6kuabuwooooICiiigD//2Q==";
+const $ = (s, r = document) => r.querySelector(s);
+const fmt = (n, d = 0) => Number(n || 0).toLocaleString("en-IN", { minimumFractionDigits: d, maximumFractionDigits: d });
+
+// Campus Venues with Certified Fire-Safety Capacities (FR-02, FR-03)
+const VENUES = {
+  AUD: { id: "AUD", name: "Main Auditorium", cap: 500, type: "AUDITORIUM", bufferMin: 30, status: "ACTIVE" },
+  OAT: { id: "OAT", name: "Open Air Theatre (OAT)", cap: 2000, type: "OUTDOOR", bufferMin: 30, status: "ACTIVE" },
+  SEM_A: { id: "SEM_A", name: "Seminar Hall A", cap: 200, type: "SEMINAR", bufferMin: 30, status: "ACTIVE" },
+  CR_302: { id: "CR_302", name: "Classroom 302 (Block B)", cap: 60, type: "CLASSROOM", bufferMin: 30, status: "ACTIVE" },
+  ROBO_LAB: { id: "ROBO_LAB", name: "Innovation & Robotics Lab", cap: 80, type: "LAB", bufferMin: 30, status: "ACTIVE" },
+  SEM_B: { id: "SEM_B", name: "Seminar Hall B (AC Repair)", cap: 180, type: "SEMINAR", bufferMin: 30, status: "MAINTENANCE" }
+};
+
+// Representative subset of the 46 Student Clubs (with aggregate stats across all 46 clubs)
+const CLUBS = [
+  { id: "CLB-01", name: "Coding & AI Society", leader: "Aarav Mehta (Final Yr)", incoming: "Riya Sharma (3rd Yr)", faculty: "Dr. S. Kulkarni", alloc: 180000, spent: 62000, earmarked: 25000, overdueReceipts: false, eventsYr: 14 },
+  { id: "CLB-02", name: "Robotics & Drone Club", leader: "rohan.v@itm.edu", incoming: "Kabir Verma (2nd Yr)", faculty: "Prof. M. Deshmukh", alloc: 220000, spent: 95000, earmarked: 45000, overdueReceipts: false, eventsYr: 11 },
+  { id: "CLB-03", name: "Dramatics & Rangmanch", leader: "Ananya Iyer (Final Yr)", incoming: "Devika Nair (3rd Yr)", faculty: "Dr. P. Chatterjee", alloc: 150000, spent: 70000, earmarked: 18500, overdueReceipts: false, eventsYr: 9 },
+  { id: "CLB-04", name: "Entrepreneurship Cell (E-Cell)", leader: "Siddharth Jain (Final Yr)", incoming: "Neha Gupta (3rd Yr)", faculty: "Prof. R. Bansal", alloc: 250000, spent: 110000, earmarked: 0, overdueReceipts: true, eventsYr: 15 },
+  { id: "CLB-05", name: "Music & Cultural Acoustics", leader: "Vikramaditya Rao (Final Yr)", incoming: "Tanvi Joshi (2nd Yr)", faculty: "Dr. A. Gokhale", alloc: 160000, spent: 54000, earmarked: 30000, overdueReceipts: false, eventsYr: 10 },
+  { id: "CLB-06", name: "CyberSec & CTF Guild", leader: "Zoya Khan (Final Yr)", incoming: "Aryan Patel (3rd Yr)", faculty: "Dr. S. Kulkarni", alloc: 120000, spent: 38000, earmarked: 0, overdueReceipts: false, eventsYr: 12 },
+  { id: "CLB-07", name: "Debate & Literary Union", leader: "Meera Krishnan (Final Yr)", incoming: "Pranav Menon (2nd Yr)", faculty: "Prof. K. Thomas", alloc: 90000, spent: 28000, earmarked: 0, overdueReceipts: false, eventsYr: 8 },
+  { id: "CLB-08", name: "Green Campus & NSS Chapter", leader: "Harshvardhan Patil (Final Yr)", incoming: "Snehaulkarni (3rd Yr)", faculty: "Dr. V. Sawant", alloc: 110000, spent: 41000, earmarked: 12000, overdueReceipts: false, eventsYr: 11 }
+];
+
+const ROLES = {
+  leader: ["Club Leader (Coding Society · CLB-01)", true, false, false, false],
+  faculty: ["Faculty Coordinator (Tier-1 Approver)", false, true, false, false],
+  dean: ["Dean of Student Affairs (Tier-2 Approver)", false, false, true, false],
+  security: ["Campus Security Desk (Tier-3 Clearance)", false, false, false, true],
+  auditor: ["System Auditor / Junior Maintainer (KT)", false, false, false, false]
+};
+
+async function sha(s) {
+  if (window.crypto && crypto.subtle) {
+    const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
+    return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, "0")).join("");
+  }
+  let h = 5381;
+  for (const c of s) h = (h * 33 ^ c.charCodeAt(0)) >>> 0;
+  return h.toString(16).padStart(8, "0").repeat(8);
+}
+
+const S = {
+  role: "leader",
+  tab: "stepper",
+  step: 1,
+  ay: "2026-27",
+  selectedProposalId: "PROP-2026-104",
+  tamper: false,
+  bvaBudgetInput: 18500,
+  bvaAttendeeInput: 450,
+  bvaVenueInput: "AUD",
+  clashTestMode: "R1",
+  proposals: [
+    {
+      id: "PROP-2026-101",
+      clubId: "CLB-01",
+      clubName: "Coding & AI Society",
+      title: "HackSphere 2026 — 24h Campus AI Hackathon",
+      venueId: "AUD",
+      date: "2026-10-18",
+      start: "09:00",
+      end: "18:00",
+      attendees: 480,
+      budget: 25000,
+      state: "APPROVED_AND_BOOKED",
+      slotState: "CONFIRMED",
+      holdToken: "HLD-AUD-1018-992A",
+      fastTrackDean: false,
+      tier1: { status: "APPROVED", by: "Dr. S. Kulkarni", at: "2026-10-01 11:20", hrs: 4.2 },
+      tier2: { status: "APPROVED", by: "Dean Student Affairs", at: "2026-10-01 19:45", hrs: 8.4 },
+      tier3: { status: "APPROVED", by: "Chief Security Officer", at: "2026-10-02 09:15", hrs: 13.5 },
+      receiptUploaded: true,
+      actualSpend: 23800,
+      certsIssued: 462,
+      hash: ""
+    },
+    {
+      id: "PROP-2026-102",
+      clubId: "CLB-02",
+      clubName: "Robotics & Drone Club",
+      title: "Autonomous Drone Flight Showcase",
+      venueId: "OAT",
+      date: "2026-10-20",
+      start: "16:00",
+      end: "20:00",
+      attendees: 850,
+      budget: 45000,
+      state: "APPROVED_AND_BOOKED",
+      slotState: "CONFIRMED",
+      holdToken: "HLD-OAT-1020-441B",
+      fastTrackDean: false,
+      tier1: { status: "APPROVED", by: "Prof. M. Deshmukh", at: "2026-10-02 10:00", hrs: 5.0 },
+      tier2: { status: "APPROVED", by: "Dean Student Affairs", at: "2026-10-02 18:30", hrs: 8.5 },
+      tier3: { status: "APPROVED", by: "Chief Security Officer", at: "2026-10-03 08:20", hrs: 13.8 },
+      receiptUploaded: false,
+      actualSpend: 0,
+      certsIssued: 0,
+      hash: ""
+    },
+    {
+      id: "PROP-2026-103",
+      clubId: "CLB-06",
+      clubName: "CyberSec & CTF Guild",
+      title: "Weekly Linux Kernel & OWASP Study Circle",
+      venueId: "CR_302",
+      date: "2026-10-22",
+      start: "14:00",
+      end: "16:00",
+      attendees: 42,
+      budget: 0,
+      state: "APPROVED_AND_BOOKED",
+      slotState: "CONFIRMED",
+      holdToken: "HLD-CR302-1022-119C",
+      fastTrackDean: true,
+      tier1: { status: "APPROVED", by: "Dr. S. Kulkarni", at: "2026-10-03 14:10", hrs: 2.1 },
+      tier2: { status: "FAST_TRACKED", by: "Auto-Rule FR-05 (B=₹0, N≤50, Classroom)", at: "2026-10-03 14:10", hrs: 0.0 },
+      tier3: { status: "APPROVED", by: "Security Gate Desk", at: "2026-10-03 17:40", hrs: 3.5 },
+      receiptUploaded: true,
+      actualSpend: 0,
+      certsIssued: 39,
+      hash: ""
+    },
+    {
+      id: "PROP-2026-104",
+      clubId: "CLB-03",
+      clubName: "Dramatics & Rangmanch",
+      title: "Nukkad Natak & Autumn Theatre Night",
+      venueId: "AUD",
+      date: "2026-10-25",
+      start: "17:00",
+      end: "20:30",
+      attendees: 440,
+      budget: 18500,
+      state: "PENDING_DEAN",
+      slotState: "SOFT_HOLD",
+      holdToken: "HLD-AUD-1025-774D",
+      fastTrackDean: false,
+      tier1: { status: "APPROVED", by: "Dr. P. Chatterjee", at: "2026-10-04 16:00", hrs: 6.0 },
+      tier2: { status: "PENDING", by: "Awaiting Dean Sign-off", at: "-", hrs: 11.5 },
+      tier3: { status: "WAITING", by: "Campus Security Desk", at: "-", hrs: 0 },
+      receiptUploaded: false,
+      actualSpend: 0,
+      certsIssued: 0,
+      hash: ""
+    }
+  ],
+  handovers: [
+    { clubId: "CLB-01", clubName: "Coding & AI Society", from: "Aarav Mehta (2025-26)", to: "Riya Sharma (2026-27)", status: "COMPLETED", signedBy: "Dr. S. Kulkarni & Dean", date: "2026-05-18" },
+    { clubId: "CLB-03", clubName: "Dramatics & Rangmanch", from: "Ananya Iyer (2025-26)", to: "Devika Nair (2026-27)", status: "PENDING_SIGN", signedBy: "Awaiting Co-Sign", date: "-" }
+  ],
+  form: {
+    clubId: "CLB-01",
+    title: "AI Agentic Coding Workshop & Quiz",
+    venueId: "SEM_A",
+    date: "2026-10-28",
+    start: "10:00",
+    end: "13:00",
+    attendees: 150,
+    budget: 12000
+  }
+};
+
+const toast = m => {
+  const t = $("#toast");
+  t.textContent = m;
+  t.hidden = false;
+  clearTimeout(toast.t);
+  toast.t = setTimeout(() => t.hidden = true, 3600);
+};
+
+const canonProp = (p, tamper = false) => JSON.stringify({
+  id: p.id,
+  club: p.clubId,
+  venue: p.venueId,
+  slot: `${p.date}T${p.start}-${p.end}`,
+  attendees: p.attendees,
+  budget: p.budget + (tamper ? 1 : 0),
+  state: p.state,
+  slotState: p.slotState,
+  holdToken: p.holdToken,
+  t1: p.tier1.status,
+  t2: p.tier2.status,
+  t3: p.tier3.status
+});
+
+async function refreshHashes() {
+  let prev = "0".repeat(64);
+  for (const p of S.proposals) {
+    const h = await sha(prev + "|" + canonProp(p, false));
+    p.prevHash = prev;
+    p.hash = h;
+    prev = h;
+  }
+}
+
+const TABS = [
+  ["stepper", "Propose → Approve Stepper"],
+  ["overview", "Campus Overview (46 Clubs)"],
+  ["venues", "Venue Clash & Buffer Engine"],
+  ["budget", "Club Budget & 7-Day Receipts"],
+  ["handover", "Annual Handover & QR Certs"],
+  ["verify", "SHA-256 Audit Verify"],
+  ["sepm", "SEPM Forecast, BVA & Risks"]
+];
+
+const HEAD = {
+  stepper: [
+    "End-to-End Event Proposal, Soft-Hold & 3-Tier Approval Stepper",
+    "Walk through proposing a club event, acquiring an atomic SOFT_HOLD lock (±30m buffer), routing across Faculty → Dean → Security within the ≤3-day SLA, and issuing QR-verified certificates."
+  ],
+  overview: [
+    "ITM Skills University — 46 Student Clubs & 320 Annual Events",
+    "Real-time governance dashboard replacing paper slips (11-day average → ≤3-day SLA) and personal budget notebooks across 46 clubs."
+  ],
+  venues: [
+    "Decoupled Venue Booking Engine & Clash Prevention (FR-02, FR-03)",
+    "Enforces certified fire-safety capacities, mandatory ±30-minute setup/teardown buffers, and PostgreSQL GiST optimistic locking to eliminate last year's 17 venue clashes."
+  ],
+  budget: [
+    "Persistent Club Budget Ledger & 7-Day Receipt Reconciliation (FR-07, FR-08)",
+    "Replaces personal notebooks with multi-year institutional ledgers, automated earmarking on Dean sanction, and a 7-working-day post-event receipt compliance gate."
+  ],
+  handover: [
+    "Annual Club Leadership Handover & Bulk QR Participation Certificates (FR-09, FR-10)",
+    "Protects institutional continuity across annual leadership changes and issues SHA-256 QR-verified PDF participation certificates from attendance CSVs."
+  ],
+  verify: [
+    "Tamper-Evident SHA-256 Audit Trail Verifier (FR-11, NFR-03)",
+    "Recompute the cryptographic hash chain across every proposal, venue lock, approval signature, and budget earmark. UPDATE and DELETE are revoked on audit_log."
+  ],
+  sepm: [
+    "SEPM Case Study Evidence: Velocity Forecast, BVA/Decision Tables, DRE & Risk Matrix",
+    "Interactive verification of all case-study calculations: 96 SP backlog, 11/14/13 sprint velocities (12.67 SP/sprint), 72.73% approval cut, 0.0531 clashes/event, 95% DRE, and 9-month graduation RMMM."
+  ]
+};
+
+const getActiveProp = () => S.proposals.find(p => p.id === S.selectedProposalId) || S.proposals[S.proposals.length - 1];
+
+const V = {};
+
+// ============================================================================
+// TAB 1: 4-STEP INTERACTIVE WORKFLOW STEPPER
+// ============================================================================
+V.stepper = () => {
+  const p = getActiveProp();
+  const f = S.form;
+  const ven = VENUES[f.venueId] || VENUES.AUD;
+  const club = CLUBS.find(c => c.id === f.clubId) || CLUBS[0];
+  const availBal = club.alloc - club.spent - club.earmarked;
+  const isFastTrack = f.budget === 0 && f.attendees <= 50 && ven.type === "CLASSROOM";
+  const capOk = f.attendees >= 10 && f.attendees <= 2000 && f.attendees <= ven.cap;
+  const budOk = f.budget >= 0 && f.budget <= 150000 && f.budget <= availBal && !(f.budget > 0 && club.overdueReceipts);
+
+  const stepsList = [
+    { n: 1, title: "1. Propose & Validate", sub: "BVA & Fast-Track Check" },
+    { n: 2, title: "2. Venue Soft-Hold", sub: `±30m Buffer · ${p.slotState}` },
+    { n: 3, title: "3. 3-Tier Approval", sub: `${p.state} (≤72h SLA)` },
+    { n: 4, title: "4. Seal & QR Gate Pass", sub: p.slotState === "CONFIRMED" ? "Confirmed " : "Awaiting Tier-3" }
+  ];
+
+  let body = "";
+
+  if (S.step === 1) {
+    body = `
+    <div class="grid g2" style="grid-template-columns: 1.05fr 1fr">
+      <div class="card">
+        <div class="row" style="margin-bottom:10px">
+          <h3 style="margin:0">Step 1: Submit New Event Proposal (FR-01, FR-02)</h3>
+          <span class="sp"></span>
+          <span class="tag">Role: ${ROLES[S.role][0].split(" (")[0]}</span>
+        </div>
+
+        <div class="field">
+          <label>Student Club (46 Registered University Clubs)</label>
+          <select id="fClub">
+            ${CLUBS.map(c => `<option value="${c.id}" ${c.id === f.clubId ? "selected" : ""}>${c.id} · ${c.name} (Avail: ₹${fmt(c.alloc - c.spent - c.earmarked)}${c.overdueReceipts ? " · OVERDUE RECEIPTS" : ""})</option>`).join("")}
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Event Title</label>
+          <input type="text" id="fTitle" value="${f.title}" placeholder="e.g. Annual Tech Symposium">
+        </div>
+
+        <div class="two">
+          <div class="field">
+            <label>Target Campus Venue (FR-02)</label>
+            <select id="fVenue">
+              ${Object.values(VENUES).map(v => `<option value="${v.id}" ${v.id === f.venueId ? "selected" : ""}>${v.name} (Cap: ${v.cap}${v.status !== "ACTIVE" ? " · MAINT" : ""})</option>`).join("")}
+            </select>
+          </div>
+          <div class="field">
+            <label>Event Date</label>
+            <input type="date" id="fDate" value="${f.date}">
+          </div>
+        </div>
+
+        <div class="two">
+          <div class="field">
+            <label>Start & End Time (+30m Buffer Auto-Added)</label>
+            <div class="row" style="flex-wrap:nowrap">
+              <input type="time" id="fStart" value="${f.start}" style="width:50%">
+              <input type="time" id="fEnd" value="${f.end}" style="width:50%">
+            </div>
+          </div>
+          <div class="field">
+            <label>Expected Attendees (10 ≤ N ≤ 2,000)</label>
+            <input type="number" id="fAtt" value="${f.attendees}" min="1" max="2500">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Requested Event Budget (₹0 ≤ B ≤ ₹1,50,000)</label>
+          <input type="number" id="fBud" value="${f.budget}" min="-100" max="200000" step="500">
+        </div>
+
+        <div class="card" style="background:var(--paper);margin:12px 0;padding:12px 14px">
+          <div class="row"><span class="small">Venue Capacity Check (${f.attendees} / ${ven.cap})</span><span class="sp"></span>
+            <span class="tag ${capOk && ven.status === "ACTIVE" ? "ok" : "late"}">${ven.status !== "ACTIVE" ? "REJECT: VENUE IN MAINTENANCE" : capOk ? "PASS (Within Fire-Safety Cap)" : f.attendees < 10 ? "FAIL: Min 10 Attendees" : `FAIL: Exceeds Cap (${ven.cap})`}</span>
+          </div>
+          <div class="row" style="margin-top:6px"><span class="small">Budget & 7-Day Receipt Gate</span><span class="sp"></span>
+            <span class="tag ${budOk ? "ok" : "late"}">${club.overdueReceipts && f.budget > 0 ? "BLOCKED: Unsettled Past Receipts (>7d)" : f.budget > availBal ? "BLOCKED: Exceeds Club Balance" : f.budget < 0 || f.budget > 150000 ? "FAIL: Out of BVA Range" : "PASS (Funds Available)"}</span>
+          </div>
+          <div class="row" style="margin-top:6px"><span class="small">Tier-2 Dean Routing Rule (FR-05)</span><span class="sp"></span>
+            <span class="tag ${isFastTrack ? "ok" : "blk"}">${isFastTrack ? "AUTO-FAST-TRACK (Skip Tier-2 Dean)" : "Full 3-Tier (Faculty → Dean → Security)"}</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="btn" data-act="submitProposal" ${!(capOk && budOk && ven.status === "ACTIVE") ? "disabled" : ""}>
+            Acquire Venue SOFT_HOLD & Submit Proposal →
+          </button>
+          <button class="btn ghost" data-act="presetFastTrack">Test ₹0 Classroom Fast-Track</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="margin-bottom:10px">
+          <h3 style="margin:0">Active Proposals Queue (Click to Inspect)</h3>
+          <span class="sp"></span>
+          <span class="mono small">${S.proposals.length} active</span>
+        </div>
+        <p class="small" style="margin-top:0">Select any proposal below to walk it through Step 2 (Venue Soft-Hold), Step 3 (3-Tier Approvals), and Step 4 (Certificate & Audit Hash).</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          ${S.proposals.map(pr => {
+            const isSel = pr.id === p.id;
+            return `
+            <div class="year-card ${isSel ? "active" : ""}" data-act="selectProp" data-id="${pr.id}" style="padding:12px 15px">
+              <div class="row">
+                <b class="mono" style="color:var(--crimson)">${pr.id}</b>
+                <span class="tag blk">${pr.clubName}</span>
+                <span class="sp"></span>
+                <span class="st ${pr.slotState === "CONFIRMED" ? "open" : pr.slotState === "SOFT_HOLD" ? "closing" : "closed"}">${pr.slotState}</span>
+              </div>
+              <div style="font-weight:700;font-size:15px;margin:5px 0">${pr.title}</div>
+              <div class="row small" style="color:var(--mut)">
+                <span>${VENUES[pr.venueId].name} (${pr.attendees}/${VENUES[pr.venueId].cap})</span>
+                <span>· ${pr.date} (${pr.start}–${pr.end})</span>
+                <span class="sp"></span>
+                <b style="color:var(--ink)">₹${fmt(pr.budget)}</b>
+              </div>
+            </div>`;
+          }).join("")}
+        </div>
+        <div class="row" style="margin-top:14px;padding-top:12px;border-top:1px solid var(--line)">
+          <span class="small">Selected: <b>${p.id}</b> (${p.title})</span>
+          <span class="sp"></span>
+          <button class="btn blk" data-act="setStep" data-step="2">Inspect Venue Soft-Hold →</button>
+        </div>
+      </div>
+    </div>`;
+  } else if (S.step === 2) {
+    const pv = VENUES[p.venueId];
+    body = `
+    <div class="card">
+      <div class="row" style="margin-bottom:8px">
+        <h3 style="margin:0">Step 2: Decoupled Venue Soft-Hold & ±30m Buffer Lock (${p.id})</h3>
+        <span class="sp"></span>
+        <span class="st ${p.slotState === "CONFIRMED" ? "open" : p.slotState === "SOFT_HOLD" ? "closing" : "closed"}">SLOT: ${p.slotState}</span>
+      </div>
+      <p class="small" style="margin-top:0">
+        <b>Architectural Loose Coupling Justification (Deliverable 2):</b> <code>ApprovalWorkflowEngine</code> never queries venue tables directly. It invokes <code>IVenueBookingPort.placeSoftHold(venueId, slot, attendees)</code> and stores only the opaque token <code>${p.holdToken}</code>.
+      </p>
+
+      <div class="grid g3" style="margin:14px 0">
+        <div class="card kpi" style="background:var(--paper)">
+          <small>Opaque HoldToken (Stamp Coupling)</small>
+          <b class="mono" style="font-size:18px;color:var(--crimson)">${p.holdToken}</b>
+          <span>Bound to PostgreSQL GiST exclusion constraint</span>
+        </div>
+        <div class="card kpi" style="background:var(--paper)">
+          <small>Reserved Window (±30m Buffer)</small>
+          <b style="font-size:19px">${p.start} – ${p.end}</b>
+          <span>Buffer locked: -30m setup & +30m teardown</span>
+        </div>
+        <div class="card kpi" style="background:var(--paper)">
+          <small>Fire-Safety Capacity Guard</small>
+          <b style="font-size:19px">${p.attendees} / ${pv.cap} seats</b>
+          <span>Utilization: ${fmt(p.attendees / pv.cap * 100, 1)}% of ${pv.name}</span>
+        </div>
+      </div>
+
+      <div class="card" style="background:#FFF8FA;border:1.5px dashed var(--crimson);margin-bottom:16px">
+        <div class="row">
+          <div>
+            <h4 style="margin:0 0 4px;color:var(--crimson)">Live Venue Clash Simulator (Eliminating Last Year's 17 Double-Bookings)</h4>
+            <p class="small" style="margin:0">
+              Last year, two clubs booked the Main Auditorium for the same evening twice because paper slips had no lock. Test what happens when another club attempts to book <b>${pv.name}</b> on <b>${p.date} (${p.start}–${p.end})</b> while <code>${p.id}</code> holds a <code>${p.slotState}</code> lock:
+            </p>
+          </div>
+          <span class="sp"></span>
+          <button class="btn" data-act="simClash">Simulate Competing Club Booking Attempt</button>
+        </div>
+        ${S.clashOutput ? `<div class="hash bad" style="margin-top:12px">${S.clashOutput}</div>` : ""}
+      </div>
+
+      <div class="row" style="padding-top:12px;border-top:1px solid var(--line)">
+        <button class="btn ghost" data-act="setStep" data-step="1">← Back to Proposal Intake</button>
+        <span class="sp"></span>
+        <button class="btn" data-act="setStep" data-step="3">Next: 3-Tier Approval Pipeline →</button>
+      </div>
+    </div>`;
+  } else if (S.step === 3) {
+    const totalHrs = (p.tier1.hrs || 0) + (p.tier2.hrs || 0) + (p.tier3.hrs || 0);
+    body = `
+    <div class="card">
+      <div class="row" style="margin-bottom:8px">
+        <h3 style="margin:0">Step 3: 3-Tier Sequential Approval Workflow (${p.id})</h3>
+        <span class="sp"></span>
+        <span class="tag ok">Elapsed: ${fmt(totalHrs, 1)} hrs vs. 72.0h SLA Target (Legacy: 11 Days / 264h)</span>
+      </div>
+      <p class="small" style="margin-top:0">
+        Approve, Request Revision (retains 24h <code>SOFT_HOLD</code> grace period), or Reject (emits <code>ProposalRejectedEvent</code> and frees the venue slot within 1s).
+      </p>
+
+      <div class="dag" style="margin:18px 0">
+        <div class="node ${p.state === "PENDING_FACULTY" ? "on" : ""}">
+          <small>TIER 1 · FACULTY COORDINATOR (24h SLA)</small>
+          <div style="font-weight:700;font-size:16px;margin:6px 0">${p.tier1.by}</div>
+          <span class="st ${p.tier1.status === "APPROVED" ? "open" : p.tier1.status === "REJECTED" ? "closed" : "closing"}">${p.tier1.status}</span>
+          <div class="small mono" style="margin-top:8px">Timestamp: ${p.tier1.at}</div>
+          <div class="row" style="margin-top:12px">
+            <button class="btn" style="padding:6px 11px;font-size:12px" data-act="approveTier" data-tier="1" ${p.tier1.status === "APPROVED" ? "disabled" : ""}>✓ Endorse Tier-1</button>
+            <button class="btn ghost" style="padding:6px 11px;font-size:12px" data-act="rejectTier" data-tier="1" ${p.state === "APPROVED_AND_BOOKED" || p.state === "REJECTED" ? "disabled" : ""}>✕ Reject</button>
+          </div>
+        </div>
+
+        <div class="node ${p.state === "PENDING_DEAN" ? "on" : ""}">
+          <small>TIER 2 · DEAN OF STUDENT AFFAIRS (48h SLA)</small>
+          <div style="font-weight:700;font-size:16px;margin:6px 0">${p.fastTrackDean ? "Auto-Fast-Track (FR-05)" : "Dean's Office (Budget & Policy)"}</div>
+          <span class="st ${p.tier2.status === "APPROVED" || p.tier2.status === "FAST_TRACKED" ? "open" : p.tier2.status === "REJECTED" ? "closed" : "closing"}">${p.tier2.status}</span>
+          <div class="small mono" style="margin-top:8px">Sanction: ₹${fmt(p.budget)} · ${p.tier2.at}</div>
+          <div class="row" style="margin-top:12px">
+            <button class="btn" style="padding:6px 11px;font-size:12px" data-act="approveTier" data-tier="2" ${p.tier1.status !== "APPROVED" || p.tier2.status === "APPROVED" || p.tier2.status === "FAST_TRACKED" ? "disabled" : ""}>✓ Sanction ₹${fmt(p.budget)}</button>
+            <button class="btn ghost" style="padding:6px 11px;font-size:12px" data-act="rejectTier" data-tier="2" ${p.state === "APPROVED_AND_BOOKED" || p.state === "REJECTED" ? "disabled" : ""}>✕ Reject</button>
+          </div>
+        </div>
+
+        <div class="node ${p.state === "PENDING_SECURITY" ? "on" : ""}">
+          <small>TIER 3 · CAMPUS SECURITY DESK (72h SLA)</small>
+          <div style="font-weight:700;font-size:16px;margin:6px 0">Chief Security Officer</div>
+          <span class="st ${p.tier3.status === "APPROVED" ? "open" : p.tier3.status === "REJECTED" ? "closed" : "closing"}">${p.tier3.status}</span>
+          <div class="small mono" style="margin-top:8px">Headcount Cap: ${p.attendees}/${VENUES[p.venueId].cap} · ${p.tier3.at}</div>
+          <div class="row" style="margin-top:12px">
+            <button class="btn" style="padding:6px 11px;font-size:12px" data-act="approveTier" data-tier="3" ${(p.tier2.status !== "APPROVED" && p.tier2.status !== "FAST_TRACKED") || p.tier3.status === "APPROVED" ? "disabled" : ""}>✓ Grant Clearance & Confirm Venue</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hash">
+        <b>Domain Event Bus & State Invariant:</b><br>
+        Proposal State: <b>${p.state}</b> ↔ Venue Slot State: <b>${p.slotState}</b> (Token: <code>${p.holdToken}</code>)<br>
+        Latest SHA-256 Chain Seal: <code>${p.hash}</code>
+      </div>
+
+      <div class="row" style="margin-top:16px;padding-top:12px;border-top:1px solid var(--line)">
+        <button class="btn ghost" data-act="setStep" data-step="2">← Back to Venue Lock</button>
+        <span class="sp"></span>
+        <button class="btn" data-act="setStep" data-step="4">Next: View Gate Pass & QR Certificates →</button>
+      </div>
+    </div>`;
+  } else if (S.step === 4) {
+    const pv = VENUES[p.venueId];
+    body = `
+    <div class="card cert">
+      <div class="row">
+        <div class="row" style="gap:10px">
+          <img src="${LOGO_SRC}" alt="ITM Logo" style="width:40px;height:40px;border-radius:50%;border:1.5px solid var(--crimson)">
+          <div>
+            <span class="small mono" style="color:var(--crimson);font-weight:700">ITM SKILLS UNIVERSITY · CLUBSPHERE GOVERNANCE SEAL</span>
+            <h2 style="margin:2px 0">${p.title}</h2>
+          </div>
+        </div>
+        <span class="sp"></span>
+        <span class="st ${p.slotState === "CONFIRMED" ? "open" : "closing"}">${p.state} · ${p.slotState}</span>
+      </div>
+
+      <div class="grid g4" style="margin:16px 0">
+        <div class="card kpi" style="background:var(--paper)"><small>Proposal & Club</small><b style="font-size:18px">${p.id}</b><span>${p.clubName}</span></div>
+        <div class="card kpi" style="background:var(--paper)"><small>Confirmed Venue</small><b style="font-size:18px">${pv.name}</b><span>${p.date} (${p.start}–${p.end})</span></div>
+        <div class="card kpi" style="background:var(--paper)"><small>Sanctioned Budget</small><b style="font-size:18px;color:var(--crimson)">₹${fmt(p.budget)}</b><span>${p.fastTrackDean ? "Tier-2 Fast-Tracked" : "Earmarked in Club Ledger"}</span></div>
+        <div class="card kpi" style="background:var(--paper)"><small>Turnaround Time</small><b style="font-size:18px;color:var(--green)">${fmt((p.tier1.hrs||0)+(p.tier2.hrs||0)+(p.tier3.hrs||0), 1)} hrs</b><span>≤ 72h SLA (vs. 11d legacy)</span></div>
+      </div>
+
+      <table>
+        <thead><tr><th>Approval Tier</th><th>Authority</th><th>Decision Status</th><th>Timestamp</th><th class="num">Turnaround</th></tr></thead>
+        <tbody>
+          <tr><td><b>Tier 1 · Academic Merit</b></td><td>${p.tier1.by}</td><td><span class="tag ok">${p.tier1.status}</span></td><td class="mono">${p.tier1.at}</td><td class="num mono">${p.tier1.hrs}h</td></tr>
+          <tr><td><b>Tier 2 · Budget & Policy</b></td><td>${p.tier2.by}</td><td><span class="tag ok">${p.tier2.status}</span></td><td class="mono">${p.tier2.at}</td><td class="num mono">${p.tier2.hrs}h</td></tr>
+          <tr><td><b>Tier 3 · Crowd & Gate Safety</b></td><td>${p.tier3.by}</td><td><span class="tag ${p.tier3.status === "APPROVED" ? "ok" : "warn"}">${p.tier3.status}</span></td><td class="mono">${p.tier3.at}</td><td class="num mono">${p.tier3.hrs}h</td></tr>
+        </tbody>
+      </table>
+
+      <div class="hash" style="margin:18px 0">
+        <div class="row" style="margin-bottom:4px">
+          <b>SHA-256 Immutable Audit Chain Entry (NFR-03)</b>
+          <span class="sp"></span>
+          <span class="tag">HoldToken: ${p.holdToken}</span>
+        </div>
+        <div>Entry Hash: ${p.hash}</div>
+        <div class="small" style="color:#E2C6D0;margin-top:4px">Prev Hash: ${p.prevHash} · QR Gate Pass & ${p.certsIssued || p.attendees} Participant Certificates Ready</div>
+      </div>
+
+      <div class="row noprint">
+        <button class="btn ghost" data-act="setStep" data-step="3">← Back to 3-Tier Approvals</button>
+        <span class="sp"></span>
+        <button class="btn ghost" onclick="print()">Print Gate Pass & Sanction Slip</button>
+        <button class="btn blk" data-act="exportAuditJson">Export Signed Audit JSON</button>
+        <button class="btn" data-act="issueBatchCerts">Issue ${p.attendees} QR Participation Certificates</button>
+      </div>
+    </div>`;
+  }
+
+  return `
+    <div class="steps-nav">
+      ${stepsList.map(s => `
+        <div class="s-tab ${S.step === s.n ? "active" : S.step > s.n ? "done" : ""}" data-act="setStep" data-step="${s.n}">
+          <div class="s-num">${S.step > s.n ? "✓" : s.n}</div>
+          <div>
+            <b>${s.title}</b>
+            <small style="display:block;font-size:11px;opacity:.85">${s.sub}</small>
+          </div>
+        </div>
+      `).join("")}
+    </div>
+    ${body}
+  `;
+};
+
+// ============================================================================
+// TAB 2: CAMPUS OVERVIEW (46 CLUBS & 320 EVENTS/YEAR)
+// ============================================================================
+V.overview = () => {
+  return `
+  <div class="hero">
+    <div>
+      <div style="color:#F7E8EE;font-weight:600;letter-spacing:.03em;text-transform:uppercase;font-size:12px">ITM Skills University · Campus Governance Live Metrics</div>
+      <div class="big">320<small>events/yr across 46 student clubs</small></div>
+      <p>
+        Approval turnaround cut from <b>11.0 days to 1.8 days mean</b> (exceeding the <b>≤ 3.0-day / 72.73% reduction target</b>).
+        Atomic <code>SOFT_HOLD</code> locks with ±30m buffers reduced annual venue clashes from <b>17 conflicts (5.31%) to 0</b>.
+      </p>
+    </div>
+    <div>
+      ${[
+        ["Approval Turnaround (11d → 1.8d vs ≤3d target)", 83.6, "#6EE7B7", "83.6% Faster"],
+        ["Backlog Completion (8 Sprints · 12.67 SP/Sprint)", 100, "#FF85B3", "96 / 96 SP (100%)"],
+        ["3-Year Hosting Budget Committed (Cap: ₹2.40L)", 90, "#FBBF24", "₹2.16L / ₹2.40L (₹0 Devs)"]
+      ].map(([label, pct, col, right]) => `
+        <div style="margin:10px 0">
+          <div class="row" style="font-size:13px"><span style="color:#fff">${label}</span><span class="sp"></span><b>${right}</b></div>
+          <div class="bar"><i style="width:${pct}%;background:${col}"></i></div>
+        </div>
+      `).join("")}
+    </div>
+  </div>
+
+  <div class="grid g4" style="margin-bottom:16px">
+    <div class="card kpi"><small>Approval Time Reduction</small><b style="color:var(--crimson)">72.73% Target</b><span>((11 - 3) / 11) × 100 · Pilot: 1.8d</span></div>
+    <div class="card kpi"><small>Legacy Clash Rate Eliminated</small><b>0.0531 / event</b><span>17 clashes / 320 events → Now 0</span></div>
+    <div class="card kpi"><small>Pre-Graduation Delivery</small><b>22 Weeks</b><span>16w Dev + 6w QA/KT (14w Buffer)</span></div>
+    <div class="card kpi"><small>Defect Removal Efficiency</small><b style="color:var(--green)">95.0% DRE</b><span>19 / 20 caught pre-release</span></div>
+  </div>
+
+  <div class="card">
+    <div class="row" style="margin-bottom:12px">
+      <h3 style="margin:0">Active Governance Snapshot · 46 Student Clubs (Showing Top 8 Flagship Clubs)</h3>
+      <span class="sp"></span>
+      <span class="tag">All 46 Clubs Migrated from Personal Notebooks</span>
+    </div>
+    <div class="grid g4">
+      ${CLUBS.map(c => {
+        const avail = c.alloc - c.spent - c.earmarked;
+        return `
+        <div class="plant">
+          <div class="row"><b style="font-size:14px">${c.id}</b><span class="sp"></span><span class="tag ${c.overdueReceipts ? "late" : "ok"}">${c.overdueReceipts ? "RECEIPT OVERDUE" : "LEDGER OK"}</span></div>
+          <div style="font-family:var(--sans);font-weight:700;color:var(--ink);margin-top:4px">${c.name}</div>
+          <div class="small" style="color:var(--mut)">Coord: ${c.faculty}</div>
+          <div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--line)" class="mono">
+            Avail: <b>₹${fmt(avail)}</b> / ₹${fmt(c.alloc)}
+          </div>
+          <div class="small" style="color:var(--mut)">${c.eventsYr} events/yr · Earmarked: ₹${fmt(c.earmarked)}</div>
+        </div>`;
+      }).join("")}
+    </div>
+  </div>`;
+};
+
+// ============================================================================
+// TAB 3: VENUE CALENDAR & CLASH DECISION TABLE ENGINE
+// ============================================================================
+V.venues = () => {
+  const rules = [
+    ["R1", "NONE / RELEASED", "Yes (≥ 30m gap)", "Yes (N ≤ Cap)", "Yes", "Acquire SOFT_HOLD & initiate Tier-1 review", "PASS"],
+    ["R2", "NONE / RELEASED", "Yes (≥ 30m gap)", "No (N > Cap: 501 > 500)", "Yes", "HTTP 409 Capacity Error + suggest Open Air Theatre (2,000)", "BLOCKED"],
+    ["R3", "SOFT_HOLD (other club)", "Overlap", "Yes", "—", "HTTP 409 Soft-Hold Clash + suggest next free slot", "BLOCKED"],
+    ["R4", "CONFIRMED (other club)", "Overlap", "Yes", "—", "HTTP 409 Confirmed Clash + suggest alternate venue", "BLOCKED"],
+    ["R5", "Adjacent Event", "No (15m gap < 30m)", "Yes", "—", "HTTP 409 Buffer Violation (+30m teardown required)", "BLOCKED"],
+    ["R6", "Concurrent Race (0ms)", "Overlap", "Yes", "No (Stale Ver)", "PostgreSQL GiST exclusion blocks 2nd transaction", "BLOCKED"]
+  ];
+
+  return `
+  <div class="grid g2">
+    <div class="card">
+      <div class="row" style="margin-bottom:10px">
+        <h3 style="margin:0">Campus Venue Availability & Capacity Matrix</h3>
+        <span class="sp"></span>
+        <span class="tag">±30m Buffer Enforced</span>
+      </div>
+      <table>
+        <thead><tr><th>Venue</th><th class="num">Fire Cap</th><th>Current Slot Lock</th><th>Buffer Rule</th></tr></thead>
+        <tbody>
+          ${Object.values(VENUES).map(v => {
+            const booked = S.proposals.filter(p => p.venueId === v.id && p.slotState !== "RELEASED");
+            return `
+            <tr>
+              <td><b>${v.name}</b><br><small class="mono" style="color:var(--mut)">ID: ${v.id} · ${v.type}</small></td>
+              <td class="num mono"><b>${v.cap}</b></td>
+              <td>
+                ${v.status === "MAINTENANCE" ? `<span class="st closed">MAINTENANCE</span>` :
+                  booked.length ? booked.map(b => `<div style="margin:2px 0"><span class="st ${b.slotState === "CONFIRMED" ? "open" : "closing"}">${b.slotState}</span> <span class="mono small">${b.date} ${b.start}-${b.end} (${b.id})</span></div>`).join("") :
+                  `<span class="st open">AVAILABLE</span>`}
+              </td>
+              <td class="mono small">±${v.bufferMin} min</td>
+            </tr>`;
+          }).join("")}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="row" style="margin-bottom:10px">
+        <h3 style="margin:0">FR-03 Venue Clash Decision Table Simulator</h3>
+        <span class="sp"></span>
+        <span class="tag blk">0 / 320 Clashes</span>
+      </div>
+      <p class="small" style="margin-top:0">Click any decision rule row below to test how <code>VenueSlotBooking</code> handles capacity limits, ±30m buffers, and concurrent auditorium bookings:</p>
+      <table>
+        <thead><tr><th>Rule</th><th>Slot State</th><th>≥30m Gap?</th><th>N ≤ Cap?</th><th>System Action</th></tr></thead>
+        <tbody>
+          ${rules.map(r => `
+            <tr style="cursor:pointer;${S.clashTestMode === r[0] ? "background:#FDF2F6;font-weight:600" : ""}" data-act="testClashRule" data-r="${r[0]}">
+              <td class="mono"><b>${r[0]}</b></td>
+              <td>${r[1]}</td>
+              <td>${r[2]}</td>
+              <td>${r[3]}</td>
+              <td><span class="tag ${r[6] === "PASS" ? "ok" : "late"}">${r[6]}</span> ${r[5]}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+};
+
+// ============================================================================
+// TAB 4: CLUB BUDGET LEDGER & 7-DAY RECEIPT GATE
+// ============================================================================
+V.budget = () => {
+  const totAlloc = CLUBS.reduce((a, c) => a + c.alloc, 0);
+  const totSpent = CLUBS.reduce((a, c) => a + c.spent, 0);
+  const totEar = CLUBS.reduce((a, c) => a + c.earmarked, 0);
+  return `
+  <div class="grid g3" style="margin-bottom:16px">
+    <div class="card kpi"><small>Allocated Budget (Sample 8 Clubs)</small><b style="color:var(--crimson)">₹${fmt(totAlloc)}</b><span>5-Year Queryable Retention (NFR-04)</span></div>
+    <div class="card kpi"><small>Actual Settled Expenditure</small><b>₹${fmt(totSpent)}</b><span>Verified with PDF/PNG receipts (≤5 MB)</span></div>
+    <div class="card kpi"><small>Active Earmarked Sanctions</small><b>₹${fmt(totEar)}</b><span>Locked upon Tier-2 Dean approval</span></div>
+  </div>
+
+  <div class="card">
+    <div class="row" style="margin-bottom:12px">
+      <h3 style="margin:0">Multi-Year Institutional Club Budget Ledger & 7-Day Receipt Gate (FR-07, FR-08)</h3>
+      <span class="sp"></span>
+      <button class="btn ghost" data-act="toggleOverdueDemo">Toggle E-Cell 7-Day Receipt Freeze</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Club ID & Name</th>
+          <th>Faculty Coordinator</th>
+          <th class="num">Annual Allocation</th>
+          <th class="num">Earmarked</th>
+          <th class="num">Settled Spend</th>
+          <th class="num">Available Balance</th>
+          <th>7-Day Receipt Gate</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${CLUBS.map(c => {
+          const avail = c.alloc - c.spent - c.earmarked;
+          return `
+          <tr>
+            <td><b>${c.id} · ${c.name}</b><br><small style="color:var(--mut)">Leader: ${c.leader}</small></td>
+            <td>${c.faculty}</td>
+            <td class="num mono">₹${fmt(c.alloc)}</td>
+            <td class="num mono">₹${fmt(c.earmarked)}</td>
+            <td class="num mono">₹${fmt(c.spent)}</td>
+            <td class="num mono"><b style="color:var(--crimson)">₹${fmt(avail)}</b></td>
+            <td><span class="st ${c.overdueReceipts ? "closed" : "open"}">${c.overdueReceipts ? "FROZEN (>7d Overdue)" : "COMPLIANT"}</span></td>
+            <td>
+              <button class="btn ghost" style="padding:5px 10px;font-size:12px" data-act="settleClubReceipt" data-id="${c.id}">
+                ${c.overdueReceipts ? "Upload Receipt & Unfreeze" : "+ Log Receipt"}
+              </button>
+            </td>
+          </tr>`;
+        }).join("")}
+      </tbody>
+    </table>
+  </div>`;
+};
+
+// ============================================================================
+// TAB 5: ANNUAL LEADERSHIP HANDOVER & QR CERTIFICATES
+// ============================================================================
+V.handover = () => {
+  const p = S.proposals[0];
+  return `
+  <div class="grid g2">
+    <div class="card">
+      <div class="row" style="margin-bottom:10px">
+        <h3 style="margin:0">Annual Club Leadership Handover Wizard (FR-10, Risk R2)</h3>
+        <span class="sp"></span>
+        <span class="tag">46 Clubs Transitioned Yearly</span>
+      </div>
+      <p class="small" style="margin-top:0">
+        Every club changes leaders annually. The Handover Wizard binds ledgers to institutional Club IDs, archives the completed academic year, revokes outgoing JWT write sessions, and provisions the incoming Club Leader upon Faculty & Dean co-sign.
+      </p>
+      <table>
+        <thead><tr><th>Club</th><th>Outgoing Leader</th><th>Incoming Leader</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody>
+          ${CLUBS.slice(0, 5).map(c => {
+            const done = c.id === "CLB-01" || c.id === "CLB-02" || c.handoverDone;
+            return `
+            <tr>
+              <td><b>${c.id}</b><br><small>${c.name}</small></td>
+              <td>${c.leader}</td>
+              <td><b>${c.incoming}</b></td>
+              <td><span class="st ${done ? "open" : "closing"}">${done ? "HANDOVER SEALED" : "AWAITING CO-SIGN"}</span></td>
+              <td>
+                <button class="btn ${done ? "ghost" : ""}" style="padding:5px 10px;font-size:12px" data-act="execHandover" data-id="${c.id}" ${done ? "disabled" : ""}>
+                  ${done ? "✓ Archived" : "Co-Sign & Transfer"}
+                </button>
+              </td>
+            </tr>`;
+          }).join("")}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card cert">
+      <div class="row">
+        <img src="${LOGO_SRC}" alt="ITM Logo" style="width:38px;height:38px;border-radius:50%">
+        <div>
+          <span class="mono small" style="color:var(--crimson);font-weight:700">FR-09 · BULK CSV QR PARTICIPATION CERTIFICATE</span>
+          <h3 style="margin:0">ITM Skills University — Verified Event Certificate</h3>
+        </div>
+      </div>
+      <p class="small" style="margin:12px 0">
+        This certifies that <b>Riya Sharma (Roll No: ITM-2024-CS-089)</b> actively participated in <b>${p.title}</b> organized by <b>${p.clubName}</b> at <b>${VENUES[p.venueId].name}</b> on <b>${p.date}</b>.
+      </p>
+      <div class="hash" style="margin-bottom:12px">
+        <b>QR Verification Endpoint:</b> https://clubsphere.itm.edu/verify/CERT-2026-101-089<br>
+        <b>Digital Signature (SHA-256):</b> ${(p.hash || "").slice(0, 48)}…
+      </div>
+      <div class="row">
+        <span class="tag ok">✓ 462 Certificates Generated from Attendance CSV</span>
+        <span class="sp"></span>
+        <button class="btn" data-act="issueBatchCerts">Upload CSV & Batch-Issue PDFs</button>
+      </div>
+    </div>
+  </div>`;
+};
+
+// ============================================================================
+// TAB 6: AUDITOR SHA-256 TAMPER VERIFIER
+// ============================================================================
+V.verify = () => {
+  const lastP = S.proposals[S.proposals.length - 1];
+  return `
+  <div class="grid g2">
+    <div class="card">
+      <div class="row" style="margin-bottom:10px">
+        <h3 style="margin:0">clubsphere-audit verify (NFR-03)</h3>
+        <span class="sp"></span>
+        <label class="row small" style="cursor:pointer">
+          <input type="checkbox" id="tmp" ${S.tamper ? "checked" : ""}> Simulate ₹1 Budget Tamper on ${lastP.id}
+        </label>
+      </div>
+      <div class="term" id="term">
+        <span class="d">$ clubsphere-audit verify --ay ${S.ay} --table audit_log --check-privileges</span><br>
+        <span class="ok">✓</span> PostgreSQL Role Check: UPDATE and DELETE privileges REVOKED on audit_log<br>
+        <span class="ok">✓</span> Ready to recompute ${S.proposals.length} chained proposal & venue-lock state transitions.
+      </div>
+      <div class="row" style="margin-top:12px">
+        <button class="btn" data-act="runVerify">Recompute & Verify SHA-256 Audit Chain</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Sealed Chain Head (${lastP.id})</h3>
+      <div class="hash">${lastP.hash}</div>
+      <h3 style="margin-top:16px">Recomputed Chain Head</h3>
+      <div class="hash" id="rc">Press "Recompute & Verify" to run byte-for-byte hash verification</div>
+      <p class="small" style="margin-top:12px">
+        Every state change (proposal submission, <code>SOFT_HOLD</code> lock, Tier-1/2/3 decision, budget earmark, and annual handover) is chained via <code>SHA256(prevHash || canonicalPayload)</code>. Modifying a single byte invalidates the chain.
+      </p>
+    </div>
+  </div>`;
+};
+
+// ============================================================================
+// TAB 7: SEPM CASE STUDY MATH, BVA/DRE & RISK REGISTER
+// ============================================================================
+V.sepm = () => {
+  const b = S.bvaBudgetInput;
+  const n = S.bvaAttendeeInput;
+  const v = VENUES[S.bvaVenueInput] || VENUES.AUD;
+  const bStatus = b < 0 ? "HTTP 400 Invalid (min - 1: Negative Budget)" :
+                  b === 0 ? "VALID Lower Bound (min = ₹0 · Fast-Track Eligible if N≤50 & Classroom)" :
+                  b <= 150000 ? `VALID Partition (₹1 ≤ B ≤ ₹1,50,000 · Requires Tier-2 Dean Sanction)` :
+                  "HTTP 422 Invalid (max + 1: Exceeds ₹1,50,000 Single-Event Ceiling)";
+  const nStatus = n < 10 ? "HTTP 400 Invalid (min_sys - 1: Minimum 10 Attendees Required)" :
+                  n > 2000 ? "HTTP 422 Invalid (max_sys + 1: Exceeds Campus Cap 2,000)" :
+                  n > v.cap ? `HTTP 409 Venue Capacity Error (${n} > ${v.name} Cap ${v.cap}) · Suggests Open Air Theatre (2,000)` :
+                  `VALID (${n} ≤ ${v.name} Cap ${v.cap} · Acquires SOFT_HOLD)`;
+
+  return `
+  <div class="grid g4" style="margin-bottom:16px">
+    <div class="card kpi"><small>Sprint Velocity (Sp 1–3)</small><b style="color:var(--crimson)">12.67 SP/sp</b><span>(11 + 14 + 13) / 3 = 38 / 3 SP</span></div>
+    <div class="card kpi"><small>Remaining 58 SP Forecast</small><b>4.58 → 5 Sprints</b><span>Total: 8 Sprints (16w) + 6w QA/KT</span></div>
+    <div class="card kpi"><small>Approval Cut & Clash Rate</small><b style="color:var(--green)">72.73% · 0.0531</b><span>11d → 3d target · 17 / 320 clashes</span></div>
+    <div class="card kpi"><small>DRE & Defect Density</small><b>95.0% · 1.60/KLOC</b><span>19/20 caught · 0.08/KLOC escaped</span></div>
+  </div>
+
+  <div class="grid g2" style="margin-bottom:16px">
+    <div class="card">
+      <h3>Interactive 7-Point Boundary Value Analysis (BVA) Tester (Deliverable 5)</h3>
+      <div class="two">
+        <div class="field">
+          <label>Test Event Budget B (Valid: ₹0 to ₹1,50,000)</label>
+          <input type="number" id="bvaB" value="${b}">
+          <div class="row" style="margin-top:4px;gap:4px">
+            ${[-1, 0, 1, 18500, 149999, 150000, 150001].map(val => `<button class="btn ghost" style="padding:3px 7px;font-size:11px" data-act="setBvaB" data-val="${val}">₹${fmt(val)}</button>`).join("")}
+          </div>
+        </div>
+        <div class="field">
+          <label>Test Attendee Count N (Valid: 10 to Venue Cap ${v.cap})</label>
+          <input type="number" id="bvaN" value="${n}">
+          <div class="row" style="margin-top:4px;gap:4px">
+            ${[9, 10, 11, 499, 500, 501, 2000, 2001].map(val => `<button class="btn ghost" style="padding:3px 7px;font-size:11px" data-act="setBvaN" data-val="${val}">${val}</button>`).join("")}
+          </div>
+        </div>
+      </div>
+      <div class="hash" style="margin-top:8px">
+        <b>Budget BVA Result (₹${fmt(b)}):</b> ${bStatus}<br>
+        <b>Attendee BVA Result (N=${n} on ${v.name}):</b> ${nStatus}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Top-3 Risks & RMMM Controls (Deliverable 6)</h3>
+      <table>
+        <thead><tr><th>Risk</th><th>P×I</th><th>RMMM Mitigation & Trigger Control</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>R1 · Dev Graduation (9m)</b></td>
+            <td class="mono"><span class="tag late">25 (5×5)</span></td>
+            <td>Finish 96 SP by W16 & Go-Live by W22 (<b>14w buffer</b>); onboard 2nd/3rd-yr Shadow Maintainers in Sprint 3; Week 21 solo DR drill.</td>
+          </tr>
+          <tr>
+            <td><b>R2 · 46-Club Turnover</b></td>
+            <td class="mono"><span class="tag late">20 (5×4)</span></td>
+            <td>Bind 5-yr ledgers to institutional Club IDs; co-signed Annual Handover Wizard (FR-10); ≤4-min self-guided UI (SUS 86.5).</td>
+          </tr>
+          <tr>
+            <td><b>R3 · Venue Double-Book</b></td>
+            <td class="mono"><span class="tag warn">15 (3×5)</span></td>
+            <td>PostgreSQL GiST interval lock (±30m buffer); auto-release on rejection (<1s); 24h SLA backup-approver escalation.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+};
+
+async function runVerifyAnim() {
+  const t = $("#term");
+  const lastP = S.proposals[S.proposals.length - 1];
+  S.tamper = $("#tmp") ? $("#tmp").checked : false;
+  t.innerHTML = `<span class="d">$ clubsphere-audit verify --ay ${S.ay} --proposals ${S.proposals.length}</span><br>`;
+  let prev = "0".repeat(64);
+  let recomputedLast = "";
+  for (let i = 0; i < S.proposals.length; i++) {
+    const p = S.proposals[i];
+    const isLast = i === S.proposals.length - 1;
+    const h = await sha(prev + "|" + canonProp(p, isLast && S.tamper));
+    prev = h;
+    recomputedLast = h;
+    t.innerHTML += `<span class="ok">✓</span> Verified ${p.id} (${p.slotState}) → ${h.slice(0, 24)}…<br>`;
+    await new Promise(r => setTimeout(r, 180));
+  }
+  const ok = recomputedLast === lastP.hash;
+  t.innerHTML += ok
+    ? `<br><span class="ok">PASS: All ${S.proposals.length} audit records & venue locks are byte-for-byte intact.</span>`
+    : `<br><span class="bad">CRITICAL FAIL: Tamper detected on ${lastP.id}! Stored hash does not match recomputed payload.</span>`;
+  const rc = $("#rc");
+  if (rc) {
+    rc.textContent = recomputedLast;
+    rc.className = "hash" + (ok ? "" : " bad");
+  }
+}
+
+const act = {
+  setStep: e => { S.step = +e.dataset.step; render(); },
+  selectProp: e => { S.selectedProposalId = e.dataset.id; S.clashOutput = null; render(); },
+  presetFastTrack: () => {
+    S.form = {
+      clubId: "CLB-06",
+      title: "OWASP Security Code Review Circle",
+      venueId: "CR_302",
+      date: "2026-10-29",
+      start: "15:00",
+      end: "16:30",
+      attendees: 35,
+      budget: 0
+    };
+    toast("Loaded ₹0 Classroom Fast-Track preset (N=35 ≤ 50, B=₹0 → skips Tier-2 Dean).");
+    render();
+  },
+  submitProposal: async () => {
+    const f = S.form;
+    const club = CLUBS.find(c => c.id === f.clubId) || CLUBS[0];
+    const ven = VENUES[f.venueId];
+    const fast = f.budget === 0 && f.attendees <= 50 && ven.type === "CLASSROOM";
+    const newId = `PROP-2026-${101 + S.proposals.length}`;
+    const newProp = {
+      id: newId,
+      clubId: club.id,
+      clubName: club.name,
+      title: f.title || "Untitled Club Event",
+      venueId: ven.id,
+      date: f.date,
+      start: f.start,
+      end: f.end,
+      attendees: f.attendees,
+      budget: f.budget,
+      state: "PENDING_FACULTY",
+      slotState: "SOFT_HOLD",
+      holdToken: `HLD-${ven.id}-${f.date.slice(5).replace("-", "")}-${Math.floor(100 + Math.random() * 899)}X`,
+      fastTrackDean: fast,
+      tier1: { status: "PENDING", by: club.faculty, at: "Awaiting Review", hrs: 1.5 },
+      tier2: { status: fast ? "FAST_TRACKED" : "WAITING", by: fast ? "Auto-Rule FR-05 (B=₹0, N≤50)" : "Dean Student Affairs", at: fast ? "Auto" : "-", hrs: 0 },
+      tier3: { status: "WAITING", by: "Campus Security Desk", at: "-", hrs: 0 },
+      receiptUploaded: false,
+      actualSpend: 0,
+      certsIssued: 0,
+      hash: ""
+    };
+    S.proposals.push(newProp);
+    S.selectedProposalId = newId;
+    await refreshHashes();
+    S.step = 2;
+    toast(`SOFT_HOLD acquired (${newProp.holdToken})! Proposal ${newId} routed to Tier-1.`);
+    render();
+  },
+  simClash: () => {
+    const p = getActiveProp();
+    const pv = VENUES[p.venueId];
+    S.clashOutput = `[HTTP 409 CONFLICT — PostgreSQL GiST Exclusion Constraint "no_venue_slot_overlap"]
+Competing request for ${pv.name} on ${p.date} (${p.start}–${p.end}) REJECTED in 1.8ms!
+Reason: Active ${p.slotState} lock held by ${p.id} (Token: ${p.holdToken}) with ±30m buffer.
+→ Suggested Alternate Free Slots: (1) ${p.date} 10:00–13:00  (2) ${p.date} + 1 day  (3) Open Air Theatre (Cap: 2,000)`;
+    toast("HTTP 409 Clash Blocked! Zero double-bookings permitted.");
+    render();
+  },
+  approveTier: async e => {
+    const tier = +e.dataset.tier;
+    const p = getActiveProp();
+    const now = new Date().toISOString().slice(0, 16).replace("T", " ");
+    if (tier === 1) {
+      p.tier1.status = "APPROVED";
+      p.tier1.at = now;
+      p.tier1.hrs = 3.2;
+      if (p.fastTrackDean) {
+        p.tier2.status = "FAST_TRACKED";
+        p.tier2.at = now;
+        p.state = "PENDING_SECURITY";
+        toast("Tier-1 Approved! Tier-2 Auto-Fast-Tracked (B=₹0, N≤50) → Routed to Tier-3 Security.");
+      } else {
+        p.tier2.status = "PENDING";
+        p.state = "PENDING_DEAN";
+        toast("Tier-1 Faculty Endorsed! Routed to Tier-2 Dean of Student Affairs.");
+      }
+    } else if (tier === 2) {
+      p.tier2.status = "APPROVED";
+      p.tier2.at = now;
+      p.tier2.hrs = 6.4;
+      p.tier3.status = "PENDING";
+      p.state = "PENDING_SECURITY";
+      const cl = CLUBS.find(c => c.id === p.clubId);
+      if (cl) cl.earmarked += p.budget;
+      toast(`Tier-2 Dean Sanctioned ₹${fmt(p.budget)}! Funds earmarked in ledger → Routed to Tier-3 Security.`);
+    } else if (tier === 3) {
+      p.tier3.status = "APPROVED";
+      p.tier3.at = now;
+      p.tier3.hrs = 4.1;
+      p.state = "APPROVED_AND_BOOKED";
+      p.slotState = "CONFIRMED";
+      toast(`Tier-3 Security Cleared! Emitted ProposalFinalApprovedEvent → Venue upgraded SOFT_HOLD → CONFIRMED.`);
+    }
+    await refreshHashes();
+    render();
+  },
+  rejectTier: async e => {
+    const tier = +e.dataset.tier;
+    const p = getActiveProp();
+    const now = new Date().toISOString().slice(0, 16).replace("T", " ");
+    if (tier === 1) p.tier1.status = "REJECTED";
+    if (tier === 2) p.tier2.status = "REJECTED";
+    p.state = "REJECTED";
+    p.slotState = "RELEASED";
+    p.tier1.at = now;
+    await refreshHashes();
+    toast(`Proposal ${p.id} REJECTED! Emitted ProposalRejectedEvent → Venue SOFT_HOLD auto-released in <1s.`);
+    render();
+  },
+  issueBatchCerts: () => {
+    const p = getActiveProp();
+    p.certsIssued = p.attendees;
+    toast(`Generated ${p.attendees} SHA-256 QR-verified PDF participation certificates!`);
+    render();
+  },
+  exportAuditJson: () => {
+    const p = getActiveProp();
+    const data = { university: "ITM Skills University", platform: "ClubSphere v1.0", academicYear: S.ay, proposal: p };
+    const a = document.createElement("a");
+    a.href = "data:application/json," + encodeURIComponent(JSON.stringify(data, null, 2));
+    a.download = `${p.id}_audit_seal.json`;
+    a.click();
+  },
+  testClashRule: e => {
+    S.clashTestMode = e.dataset.r;
+    toast(`Inspected FR-03 Decision Table Rule ${S.clashTestMode}.`);
+    render();
+  },
+  toggleOverdueDemo: () => {
+    const c = CLUBS.find(x => x.id === "CLB-04");
+    c.overdueReceipts = !c.overdueReceipts;
+    toast(`E-Cell (CLB-04) 7-day receipt status set to: ${c.overdueReceipts ? "OVERDUE (Budget Proposals Blocked)" : "COMPLIANT"}.`);
+    render();
+  },
+  settleClubReceipt: e => {
+    const c = CLUBS.find(x => x.id === e.dataset.id);
+    if (c) {
+      c.overdueReceipts = false;
+      if (c.earmarked > 0) {
+        c.spent += c.earmarked;
+        c.earmarked = 0;
+      } else {
+        c.spent += 5000;
+      }
+      toast(`Receipt verified for ${c.name}! Ledger reconciled and 7-day compliance gate cleared.`);
+      render();
+    }
+  },
+  execHandover: e => {
+    const c = CLUBS.find(x => x.id === e.dataset.id);
+    if (c) {
+      c.handoverDone = true;
+      c.leader = c.incoming;
+      toast(`Annual Handover Co-Signed for ${c.name}! Outgoing JWT revoked; ${c.incoming} provisioned.`);
+      render();
+    }
+  },
+  runVerify: () => runVerifyAnim(),
+  setBvaB: e => { S.bvaBudgetInput = +e.dataset.val; render(); },
+  setBvaN: e => { S.bvaAttendeeInput = +e.dataset.val; render(); }
+};
+
+document.addEventListener("click", e => {
+  const a = e.target.closest("[data-act]");
+  if (a && act[a.dataset.act]) act[a.dataset.act](a);
+  const t = e.target.closest("[data-tab]");
+  if (t) { S.tab = t.dataset.tab; render(); }
+});
+
+document.addEventListener("input", e => {
+  const id = e.target.id;
+  if (["fClub", "fTitle", "fVenue", "fDate", "fStart", "fEnd", "fAtt", "fBud"].includes(id)) {
+    S.form = {
+      clubId: $("#fClub").value,
+      title: $("#fTitle").value,
+      venueId: $("#fVenue").value,
+      date: $("#fDate").value,
+      start: $("#fStart").value,
+      end: $("#fEnd").value,
+      attendees: +$("#fAtt").value || 0,
+      budget: +$("#fBud").value || 0
+    };
+    render();
+    const el = $("#" + id);
+    if (el && el.tagName === "INPUT" && el.type !== "date" && el.type !== "time") {
+      el.focus();
+      try { el.setSelectionRange(999, 999); } catch (x) {}
+    }
+  }
+  if (id === "bvaB") { S.bvaBudgetInput = +e.target.value || 0; render(); $("#bvaB").focus(); }
+  if (id === "bvaN") { S.bvaAttendeeInput = +e.target.value || 0; render(); $("#bvaN").focus(); }
+});
+
+document.addEventListener("change", e => {
+  if (e.target.id === "role") { S.role = e.target.value; toast(`Switched active RBAC role to: ${ROLES[S.role][0]}`); render(); }
+  if (e.target.id === "topAy") { S.ay = e.target.value; render(); }
+  if (e.target.id === "tmp") { S.tamper = e.target.checked; }
+});
+
+function render() {
+  $("#top").innerHTML = `
+    <div class="brand">
+      <img src="${LOGO_SRC}" alt="ITM Skills University">
+      <div>
+        ClubSphere
+        <span class="brand-sub">ITM Skills University · 46 Clubs</span>
+      </div>
+    </div>
+    <span class="chipx"><i class="dot open"></i>320 Events/Yr · 0 Venue Clashes</span>
+    <span class="chipx">SLA: ≤ 3.0 Days (72.73% Cut)</span>
+    <div class="row" style="gap:6px">
+      <span class="small" style="color:#F7E8EE">Term:</span>
+      <select id="topAy">
+        <option value="2026-27" ${S.ay === "2026-27" ? "selected" : ""}>AY 2026-27 (ACTIVE)</option>
+        <option value="2025-26" ${S.ay === "2025-26" ? "selected" : ""}>AY 2025-26 (ARCHIVED)</option>
+        <option value="2024-25" ${S.ay === "2024-25" ? "selected" : ""}>AY 2024-25 (ARCHIVED)</option>
+      </select>
+    </div>
+    <span class="sp"></span>
+    <span class="small" style="color:#F7E8EE">RBAC Role:</span>
+    <select id="role">${Object.entries(ROLES).map(([k, v]) => `<option value="${k}" ${k === S.role ? "selected" : ""}>${v[0]}</option>`).join("")}</select>
+  `;
+  $("#tabs").innerHTML = TABS.map(([k, n]) => `<a data-tab="${k}" class="${S.tab === k ? "on" : ""}">${n}</a>`).join("");
+  $("#view").innerHTML = `<h1 class="ttl">${HEAD[S.tab][0]}</h1><p class="lead">${HEAD[S.tab][1]}</p>` + V[S.tab]();
+}
+
+refreshHashes().then(() => render());
+</script>
+</body>
+</html>

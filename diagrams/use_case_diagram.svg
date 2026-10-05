@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 760" width="100%" height="100%" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrowInc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#3f3f46" stroke-width="1.6"/>
+    </marker>
+    <marker id="arrowExt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#dc4c3e" stroke-width="1.6"/>
+    </marker>
+  </defs>
+
+  <rect width="1100" height="760" fill="#ffffff"/>
+  <rect x="12" y="10" width="1076" height="740" rx="8" fill="#fafafa" stroke="#d4d4d8" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="12" y="10" width="1076" height="42" rx="8" fill="#18181b"/>
+  <text x="32" y="36" fill="#ffffff" font-size="15" font-weight="700">UML Use Case Diagram — ClubSphere Platform</text>
+  <text x="1068" y="36" fill="#a1a1aa" font-size="11.5" text-anchor="end">11 Functional Capabilities | 5 Primary Actors</text>
+
+  <!-- System Boundary -->
+  <rect x="230" y="68" width="640" height="665" rx="8" fill="#ffffff" stroke="#18181b" stroke-width="2"/>
+  <rect x="230" y="68" width="640" height="30" rx="8" fill="#27272a"/>
+  <text x="550" y="88" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">&lt;&lt;System&gt;&gt; ClubSphere Event &amp; Club Governance Platform</text>
+
+  <!-- Subsystem Dashed Groupings -->
+  <rect x="248" y="110" width="604" height="190" rx="6" fill="none" stroke="#71717a" stroke-dasharray="5,4" stroke-width="1.2"/>
+  <text x="260" y="127" fill="#18181b" font-size="10.5" font-weight="700">1. Proposal &amp; Venue Booking Module (Loosely Coupled Port)</text>
+
+  <rect x="248" y="314" width="604" height="165" rx="6" fill="none" stroke="#dc4c3e" stroke-dasharray="5,4" stroke-width="1.2"/>
+  <text x="260" y="331" fill="#dc4c3e" font-size="10.5" font-weight="700">2. Multi-Tier Approval Workflow Module (3-Day SLA Target)</text>
+
+  <rect x="248" y="492" width="604" height="205" rx="6" fill="none" stroke="#71717a" stroke-dasharray="5,4" stroke-width="1.2"/>
+  <text x="260" y="509" fill="#18181b" font-size="10.5" font-weight="700">3. Budget Ledger, QR Certificates &amp; Annual Handover Module</text>
+
+  <!-- ACTORS LEFT -->
+  <g transform="translate(88, 175)">
+    <circle cx="0" cy="0" r="13" fill="#f4f4f5" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="0" y1="13" x2="0" y2="45" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="-18" y1="25" x2="18" y2="25" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="0" y1="45" x2="-15" y2="68" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="0" y1="45" x2="15" y2="68" stroke="#18181b" stroke-width="2.2"/>
+    <text x="0" y="85" font-size="12" font-weight="700" fill="#18181b" text-anchor="middle">Club Leader</text>
+    <text x="0" y="99" font-size="10" fill="#52525b" text-anchor="middle">(46 Clubs)</text>
+  </g>
+
+  <g transform="translate(88, 365)">
+    <circle cx="0" cy="0" r="13" fill="#f4f4f5" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="0" y1="13" x2="0" y2="45" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="-18" y1="25" x2="18" y2="25" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="0" y1="45" x2="-15" y2="68" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="0" y1="45" x2="15" y2="68" stroke="#18181b" stroke-width="2.2"/>
+    <text x="0" y="85" font-size="12" font-weight="700" fill="#18181b" text-anchor="middle">Faculty Coordinator</text>
+    <text x="0" y="99" font-size="10" fill="#52525b" text-anchor="middle">(Tier-1 Approver)</text>
+  </g>
+
+  <g transform="translate(88, 565)">
+    <circle cx="0" cy="0" r="13" fill="#f4f4f5" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="0" y1="13" x2="0" y2="45" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="-18" y1="25" x2="18" y2="25" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="0" y1="45" x2="-15" y2="68" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="0" y1="45" x2="15" y2="68" stroke="#18181b" stroke-width="2.2"/>
+    <text x="0" y="85" font-size="12" font-weight="700" fill="#18181b" text-anchor="middle">Student Participant</text>
+    <text x="0" y="99" font-size="10" fill="#52525b" text-anchor="middle">(Attendee)</text>
+  </g>
+
+  <!-- ACTORS RIGHT -->
+  <g transform="translate(990, 305)">
+    <circle cx="0" cy="0" r="13" fill="#fef2f2" stroke="#dc4c3e" stroke-width="2.2"/>
+    <line x1="0" y1="13" x2="0" y2="45" stroke="#dc4c3e" stroke-width="2.2"/>
+    <line x1="-18" y1="25" x2="18" y2="25" stroke="#dc4c3e" stroke-width="2.2"/>
+    <line x1="0" y1="45" x2="-15" y2="68" stroke="#dc4c3e" stroke-width="2.2"/>
+    <line x1="0" y1="45" x2="15" y2="68" stroke="#dc4c3e" stroke-width="2.2"/>
+    <text x="0" y="85" font-size="12" font-weight="700" fill="#18181b" text-anchor="middle">Dean's Office</text>
+    <text x="0" y="99" font-size="10" fill="#dc4c3e" text-anchor="middle">(Tier-2 Approver)</text>
+  </g>
+
+  <g transform="translate(990, 495)">
+    <circle cx="0" cy="0" r="13" fill="#f4f4f5" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="0" y1="13" x2="0" y2="45" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="-18" y1="25" x2="18" y2="25" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="0" y1="45" x2="-15" y2="68" stroke="#18181b" stroke-width="2.2"/>
+    <line x1="0" y1="45" x2="15" y2="68" stroke="#18181b" stroke-width="2.2"/>
+    <text x="0" y="85" font-size="12" font-weight="700" fill="#18181b" text-anchor="middle">Security Desk</text>
+    <text x="0" y="99" font-size="10" fill="#52525b" text-anchor="middle">(Tier-3 Clearance)</text>
+  </g>
+
+  <!-- USE CASES -->
+  <g transform="translate(395, 165)">
+    <ellipse cx="0" cy="0" rx="108" ry="26" fill="#f4f4f5" stroke="#18181b" stroke-width="1.8"/>
+    <text x="0" y="-3" font-size="11.5" font-weight="700" fill="#18181b" text-anchor="middle">UC-01: Submit Event</text>
+    <text x="0" y="12" font-size="11" fill="#3f3f46" text-anchor="middle">Proposal (FR-01)</text>
+  </g>
+
+  <g transform="translate(710, 165)">
+    <ellipse cx="0" cy="0" rx="115" ry="26" fill="#f4f4f5" stroke="#18181b" stroke-width="1.8"/>
+    <text x="0" y="-3" font-size="11.5" font-weight="700" fill="#18181b" text-anchor="middle">UC-02: Check &amp; Soft-Lock</text>
+    <text x="0" y="12" font-size="11" fill="#3f3f46" text-anchor="middle">Venue Time-Slot (FR-02, FR-03)</text>
+  </g>
+
+  <g transform="translate(710, 258)">
+    <ellipse cx="0" cy="0" rx="112" ry="25" fill="#fef2f2" stroke="#dc4c3e" stroke-width="1.8"/>
+    <text x="0" y="-3" font-size="11" font-weight="700" fill="#dc4c3e" text-anchor="middle">UC-03: Block Clash &amp; Suggest</text>
+    <text x="0" y="12" font-size="10.5" fill="#991b1b" text-anchor="middle">Alternate Slot (FR-03)</text>
+  </g>
+
+  <g transform="translate(395, 258)">
+    <ellipse cx="0" cy="0" rx="108" ry="25" fill="#f4f4f5" stroke="#18181b" stroke-width="1.8"/>
+    <text x="0" y="-3" font-size="11.5" font-weight="700" fill="#18181b" text-anchor="middle">UC-04: Attach Budget &amp;</text>
+    <text x="0" y="12" font-size="11" fill="#3f3f46" text-anchor="middle">Attendee Count (FR-07)</text>
+  </g>
+
+  <g transform="translate(390, 372)">
+    <ellipse cx="0" cy="0" rx="110" ry="26" fill="#fef2f2" stroke="#dc4c3e" stroke-width="1.8"/>
+    <text x="0" y="-3" font-size="11.5" font-weight="700" fill="#18181b" text-anchor="middle">UC-05: Faculty Tier-1</text>
+    <text x="0" y="12" font-size="11" fill="#dc4c3e" text-anchor="middle">Review &amp; Endorse (FR-04)</text>
+  </g>
+
+  <g transform="translate(695, 372)">
+    <ellipse cx="0" cy="0" rx="115" ry="26" fill="#fef2f2" stroke="#dc4c3e" stroke-width="1.8"/>
+    <text x="0" y="-3" font-size="11.5" font-weight="700" fill="#18181b" text-anchor="middle">UC-06: Dean Tier-2 Approval</text>
+    <text x="0" y="12" font-size="11" fill="#dc4c3e" text-anchor="middle">&amp; Budget Sanction (FR-05)</text>
+  </g>
+
+  <g transform="translate(550, 442)">
+    <ellipse cx="0" cy="0" rx="122" ry="25" fill="#fef2f2" stroke="#dc4c3e" stroke-width="1.8"/>
+    <text x="0" y="-3" font-size="11.5" font-weight="700" fill="#18181b" text-anchor="middle">UC-07: Security Tier-3 Clearance</text>
+    <text x="0" y="12" font-size="11" fill="#dc4c3e" text-anchor="middle">&amp; Confirm Venue (FR-06)</text>
+  </g>
+
+  <g transform="translate(390, 542)">
+    <ellipse cx="0" cy="0" rx="110" ry="25" fill="#f4f4f5" stroke="#18181b" stroke-width="1.8"/>
+    <text x="0" y="-3" font-size="11.5" font-weight="700" fill="#18181b" text-anchor="middle">UC-08: Log Actual Spend</text>
+    <text x="0" y="12" font-size="11" fill="#3f3f46" text-anchor="middle">&amp; Receipts (FR-08)</text>
+  </g>
+
+  <g transform="translate(390, 615)">
+    <ellipse cx="0" cy="0" rx="112" ry="25" fill="#f4f4f5" stroke="#18181b" stroke-width="1.8"/>
+    <text x="0" y="-3" font-size="11.5" font-weight="700" fill="#18181b" text-anchor="middle">UC-09: Bulk Issue &amp; Verify</text>
+    <text x="0" y="12" font-size="11" fill="#3f3f46" text-anchor="middle">QR Certificates (FR-09)</text>
+  </g>
+
+  <g transform="translate(695, 542)">
+    <ellipse cx="0" cy="0" rx="115" ry="25" fill="#f4f4f5" stroke="#18181b" stroke-width="1.8"/>
+    <text x="0" y="-3" font-size="11.5" font-weight="700" fill="#18181b" text-anchor="middle">UC-10: Execute Annual Club</text>
+    <text x="0" y="12" font-size="11" fill="#3f3f46" text-anchor="middle">Leadership Handover (FR-10)</text>
+  </g>
+
+  <g transform="translate(695, 655)">
+    <ellipse cx="0" cy="0" rx="115" ry="25" fill="#f4f4f5" stroke="#18181b" stroke-width="1.8"/>
+    <text x="0" y="-3" font-size="11.5" font-weight="700" fill="#18181b" text-anchor="middle">UC-11: Append SHA-256 Audit</text>
+    <text x="0" y="12" font-size="11" fill="#3f3f46" text-anchor="middle">&amp; 3-Day SLA Alert (FR-11)</text>
+  </g>
+
+  <!-- Include / Extend -->
+  <line x1="503" y1="165" x2="592" y2="165" stroke="#3f3f46" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowInc)"/>
+  <text x="548" y="157" font-size="10" font-weight="700" fill="#3f3f46" text-anchor="middle">&lt;&lt;include&gt;&gt;</text>
+
+  <line x1="395" y1="191" x2="395" y2="230" stroke="#3f3f46" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowInc)"/>
+  <text x="432" y="214" font-size="10" font-weight="700" fill="#3f3f46" text-anchor="middle">&lt;&lt;include&gt;&gt;</text>
+
+  <line x1="710" y1="233" x2="710" y2="194" stroke="#dc4c3e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowExt)"/>
+  <text x="772" y="218" font-size="10" font-weight="700" fill="#dc4c3e" text-anchor="middle">&lt;&lt;extend&gt;&gt; [if clash]</text>
+
+  <path d="M 550 467 L 645 632" fill="none" stroke="#3f3f46" stroke-width="1.4" stroke-dasharray="5,3" marker-end="url(#arrowInc)"/>
+  <text x="568" y="575" font-size="10" font-weight="700" fill="#3f3f46">&lt;&lt;include&gt;&gt;</text>
+
+  <!-- Actor Lines -->
+  <line x1="115" y1="190" x2="287" y2="165" stroke="#18181b" stroke-width="1.6"/>
+  <line x1="115" y1="200" x2="287" y2="258" stroke="#18181b" stroke-width="1.6"/>
+  <line x1="115" y1="215" x2="280" y2="542" stroke="#18181b" stroke-width="1.6"/>
+  <line x1="115" y1="225" x2="278" y2="615" stroke="#18181b" stroke-width="1.6"/>
+
+  <line x1="115" y1="385" x2="280" y2="372" stroke="#18181b" stroke-width="1.8"/>
+  <line x1="115" y1="400" x2="580" y2="542" stroke="#52525b" stroke-width="1.3"/>
+
+  <line x1="115" y1="595" x2="278" y2="615" stroke="#18181b" stroke-width="1.8"/>
+
+  <line x1="965" y1="330" x2="810" y2="372" stroke="#dc4c3e" stroke-width="1.8"/>
+  <line x1="965" y1="345" x2="810" y2="542" stroke="#dc4c3e" stroke-width="1.5"/>
+  <line x1="965" y1="360" x2="810" y2="655" stroke="#dc4c3e" stroke-width="1.5"/>
+
+  <line x1="965" y1="510" x2="672" y2="442" stroke="#18181b" stroke-width="1.8"/>
+  <line x1="965" y1="495" x2="825" y2="165" stroke="#52525b" stroke-width="1.3"/>
+
+  <!-- Legend -->
+  <rect x="248" y="702" width="604" height="24" rx="4" fill="#f4f4f5" stroke="#d4d4d8"/>
+  <text x="262" y="718" font-size="10" fill="#18181b" font-weight="700">Key:</text>
+  <line x1="295" y1="714" x2="325" y2="714" stroke="#18181b" stroke-width="1.8"/>
+  <text x="332" y="718" font-size="10" fill="#27272a">Actor Participation</text>
+  <line x1="445" y1="714" x2="480" y2="714" stroke="#3f3f46" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowInc)"/>
+  <text x="488" y="718" font-size="10" fill="#27272a">&lt;&lt;include&gt;&gt; Mandatory Step</text>
+  <line x1="645" y1="714" x2="680" y2="714" stroke="#dc4c3e" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowExt)"/>
+  <text x="688" y="718" font-size="10" fill="#dc4c3e">&lt;&lt;extend&gt;&gt; Clash Branch</text>
+</svg>
